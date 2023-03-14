@@ -1,0 +1,1 @@
+# semgrep_android_rules
