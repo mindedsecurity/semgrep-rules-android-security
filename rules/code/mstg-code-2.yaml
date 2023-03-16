@@ -1,0 +1,23 @@
+rules:
+  - id: MSTG-CODE-3
+    severity: WARNING
+    languages: 
+      - generic
+    metadata:
+      company: IMQ Minded Security
+      author: Martino Lessio (mlessio)
+      owasp-mobile: M9
+      category: security
+      area: code
+      verification-level: 
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-whether-the-app-is-debuggable-mstg-code-2
+    message: >-
+      The application is built with the android:debuggable flag set to true.
+    paths:
+      include: 
+        - "**/AndroidManifest.xml"
+    patterns:
+      - pattern-inside: <application ... />
+      - pattern: android:debuggable="true"
