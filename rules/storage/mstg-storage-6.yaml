@@ -1,0 +1,25 @@
+rules:
+  - id: MSTG-STORAGE-6
+    severity: WARNING
+    languages: 
+      - xml
+    metadata:
+      company: IMQ Minded Security
+      author: Riccardo Cardelli (gand3lf)
+      owasp-mobile-top: M3
+      category: security
+      area: storage
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05d-Testing-Data-Storage.md#determining-whether-sensitive-stored-data-has-been-exposed-via-ipc-mechanisms-mstg-storage-6
+    message: >-
+      The application potentially exposes sensitive data via IPC mechanisms.
+    paths:
+      include:
+        - "**/AndroidManifest.xml"
+    patterns:
+      - pattern: <provider ... />
+      - pattern-not: <provider ... android:exported="false" ... />
+      - pattern-not: <provider ... android:permission="signature" ... />

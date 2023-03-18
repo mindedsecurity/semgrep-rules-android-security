@@ -1,14 +1,17 @@
 rules:
   - id: MSTG-STORAGE-3
     severity: WARNING
-    languages: [java]
+    languages: 
+      - java
     metadata:
       company: IMQ Minded Security
       author: Riccardo Cardelli (gand3lf)
       owasp-mobile: M2
       category: security
       area: storage
-      verification-level: ["L1","L2"]
+      verification-level: 
+        - L1
+        - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05d-Testing-Data-Storage.md#testing-logs-for-sensitive-data-mstg-storage-3
     message: >-

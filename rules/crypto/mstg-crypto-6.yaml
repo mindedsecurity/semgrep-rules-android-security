@@ -1,0 +1,32 @@
+rules:
+  - id: MSTG-CRYPTO-6
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      company: IMQ Minded Security
+      author: Riccardo Cardelli (gand3lf)
+      owasp-mobile: M5
+      category: security
+      area: crypto
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05e-Testing-Cryptography.md#testing-random-number-generation-mstg-crypto-6
+    message: The application makes use of insecure random number generator.
+    pattern-either:
+        - pattern: (java.util.Random $X).$Y(...)
+        - pattern: Math.random(...)
+        # Specify a seed may reduce the randomness
+        - pattern: new SecureRandom($SEED);
+        # Detect custom insecure random implementation
+        - patterns:
+            - pattern: $M(...){ ... }
+            - pattern-not: |
+                $M(...){ ...
+                  (SecureRandom $X).$Y(...);
+                ... }
+            - metavariable-regex:
+                metavariable: $M
+                regex: .*(?i)(random).*

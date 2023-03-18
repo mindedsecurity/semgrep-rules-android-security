@@ -1,0 +1,32 @@
+rules:
+  - id: MSTG-ARCH-9
+    severity: WARNING
+    languages: 
+      - java
+    metadata:
+      company: IMQ Minded Security
+      author: Riccardo Cardelli
+      owasp-mobile-top: M7
+      category: security
+      area: arch
+      verification-level: 
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05h-Testing-Platform-Interaction.md#testing-enforced-updating-mstg-arch-9
+    message: >-
+      The activity $MAINACTIVITY does not implement a mechanism for enforcing updates.
+    patterns:
+      - pattern: |
+          public class $MAINACTIVITY extends $ACTIVITY{
+            public void onCreate(...){...}
+          }
+      - pattern-not: |
+          public class $MAINACTIVITY extends $ACTIVITY{
+            $X(...){
+              ...
+              (AppUpdateManager $Y).startUpdateFlowForResult(...);
+              ...
+            }
+          }
+      - focus-metavariable:
+          - $MAINACTIVITY
