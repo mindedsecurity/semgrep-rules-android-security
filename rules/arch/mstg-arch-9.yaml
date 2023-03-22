@@ -18,7 +18,7 @@ rules:
     patterns:
       - pattern: |
           public class $MAINACTIVITY extends $ACTIVITY{
-            public void onCreate(...){...}
+            public void onCreate(Bundle $B, ...){...}
           }
       - pattern-not: |
           public class $MAINACTIVITY extends $ACTIVITY{

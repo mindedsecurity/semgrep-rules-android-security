@@ -33,4 +33,4 @@ rules:
           - pattern: (Logger $X).severe(...);
           - pattern: (Logger $X).warning(...);
       - pattern-either:
-          - pattern-regex: .*(?i)(key|secret|password|pwd|passwd|token|salt|seed|salt|bearer|auth|otp|crypt|auth(?-i)|IV).*
+          - pattern-regex: .*(?i)(key|secret|password|pwd|passwd|token|salt|seed|salt|bearer|otp|crypt|auth(?-i)|IV).*
