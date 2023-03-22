@@ -23,3 +23,6 @@ rules:
       - pattern: <provider ... />
       - pattern-not: <provider ... android:exported="false" ... />
       - pattern-not: <provider ... android:permission="signature" ... />
+      - pattern-not: <provider ... android:permission="signatureOrSystem" ... />
+      - pattern-not: <provider ... android:permission="privileged" ... />
+      - pattern-not: <provider ... android:permission="signature|privileged" ... />
