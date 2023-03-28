@@ -1,0 +1,22 @@
+rules:
+  - id: MSTG-STORAGE-8
+    severity: WARNING
+    languages:
+      - xml
+    metadata:
+      company: IMQ Minded Security
+      author: Michele Di Bonaventura (cyberaz0r)
+      owasp-mobile: M1
+      category: security
+      area: storage
+      verification-level:
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05d-Testing-Data-Storage.md#testing-backups-for-sensitive-data-mstg-storage-8
+    message: The application allows automatic backup
+    paths:
+      include:
+        - "**/AndroidManifest.xml"
+    patterns:
+      - pattern: <application ... />
+      - pattern-not: <application ... android:allowBackup="false" ... />
