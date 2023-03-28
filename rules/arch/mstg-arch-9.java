@@ -1,4 +1,4 @@
-public class MainActivity extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         test();
@@ -9,7 +9,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-public class MainActivity extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         test();
