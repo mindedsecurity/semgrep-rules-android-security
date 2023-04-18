@@ -31,6 +31,10 @@ rules:
                 $M(...){ ...
                   (SecureRandom $X).$Y(...);
                 ... }
+            - pattern-not: |
+                $M(...){ ...
+                  SecureRandom.$Y(...);
+                ... }
             - metavariable-regex:
                 metavariable: $M
                 regex: .*(?i)(random).*
