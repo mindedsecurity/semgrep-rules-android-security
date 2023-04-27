@@ -1,0 +1,47 @@
+rules:
+  - id: MSTG-AUTH-8
+    severity: WARNING
+    languages: [java]
+    metadata:
+      company: IMQ Minded Security
+      author: Maurizio Siddu
+      owasp-mobile: M1
+      category: security
+      area: authentication
+      verification-level: L2
+      references:
+        - https://mobile-security.gitbook.io/mobile-security-testing-guide/android-testing-guide/0x05f-testing-local-authentication
+    message: >-
+      The Android application seems not properly implementig biometric authentication.
+    patterns:
+      - pattern-either:
+          - patterns:
+              - pattern-inside: |
+                  $RET  onAuthenticationSucceeded(FingerprintManager.AuthenticationResult $RES) {
+                    ...
+                  }
+          - patterns:
+              - pattern-inside: |
+                  $RET  onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult $RES) {
+                    ...
+                  }
+          - patterns:
+              - pattern-inside: |
+                  $RET  onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult $RES) {
+                    ...
+                  }
+      - pattern-not-inside: |
+          $RET onAuthenticationSucceeded(FingerprintManager.AuthenticationResult $RES) {
+            ...
+            $CIP = $RES.getCryptoObject().getCipher();
+          }
+      - pattern-not-inside: |
+          $RET onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult $RES) {
+            ...
+            $CIP = $RES.getCryptoObject().getCipher();
+          }
+      - pattern-not-inside: |
+          $RET onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult $RES) {
+            ...
+            $CIP = $RES.getCryptoObject().getCipher();
+          }
