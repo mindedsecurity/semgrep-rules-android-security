@@ -12,7 +12,7 @@ rules:
       verification-level: 
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-whether-the-app-is-debuggable-mstg-code-2
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-whether-the-app-is-debuggable-mstg-code-2
     message: >-
       The application is built with the android:debuggable flag set to true.
     paths:

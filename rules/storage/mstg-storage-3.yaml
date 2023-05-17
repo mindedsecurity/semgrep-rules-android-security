@@ -13,7 +13,7 @@ rules:
         - L1
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05d-Testing-Data-Storage.md#testing-logs-for-sensitive-data-mstg-storage-3
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05d-Testing-Data-Storage.md#testing-logs-for-sensitive-data-mstg-storage-3
     message: >-
       The application writes sensitive data in application logs.
     patterns:

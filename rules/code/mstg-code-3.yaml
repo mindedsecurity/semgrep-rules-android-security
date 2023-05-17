@@ -12,7 +12,7 @@ rules:
       verification-level: 
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-for-debugging-symbols-mstg-code-3
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-for-debugging-symbols-mstg-code-3
     message: >-
       The application uses the Android NDK build system without stripping out debug symbols.
     paths:

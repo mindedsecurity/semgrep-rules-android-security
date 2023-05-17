@@ -13,7 +13,7 @@ rules:
         - L1
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05e-Testing-Cryptography.md#testing-random-number-generation-mstg-crypto-6
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05e-Testing-Cryptography.md#testing-random-number-generation-mstg-crypto-6
     message: The application makes use of insecure random number generator.
     paths:
       exclude: 

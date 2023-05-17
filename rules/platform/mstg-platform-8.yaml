@@ -13,7 +13,7 @@ rules:
         - L1
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05h-Testing-Platform-Interaction.md#testing-object-persistence-mstg-platform-8
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-object-persistence-mstg-platform-8
     message: Object deserialization could not be implemented using safe serialization APIs.
     pattern-either:
         # Jackson potential vulnerable versions

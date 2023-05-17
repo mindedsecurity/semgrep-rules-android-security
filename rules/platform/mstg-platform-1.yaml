@@ -13,7 +13,7 @@ rules:
         - L1
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05h-Testing-Platform-Interaction.md#testing-for-app-permissions-mstg-platform-1
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-for-app-permissions-mstg-platform-1
     message: The application should request the minimum set of necessary permissions.
     pattern-either:
         # Access to location

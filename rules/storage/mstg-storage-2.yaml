@@ -13,7 +13,7 @@ rules:
         - L1
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x05d-Testing-Data-Storage.md#testing-local-storage-for-sensitive-data-mstg-storage-1-and-mstg-storage-2
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05d-Testing-Data-Storage.md#testing-local-storage-for-sensitive-data-mstg-storage-1-and-mstg-storage-2
     message: The application could store sensitive data outside of the app container or system credential storage facilities.
     options:
       symbolic_propagation: true

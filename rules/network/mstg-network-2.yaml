@@ -13,7 +13,7 @@ rules:
         - L1
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x04f-Testing-Network-Communication.md
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x04f-Testing-Network-Communication.md
     message: Weak transport protocol version $PROTO is used.
     options:
       symbolic_propagation: true
@@ -43,7 +43,7 @@ rules:
         - L1
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/master/Document/0x04f-Testing-Network-Communication.md
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x04f-Testing-Network-Communication.md
     message: Unrecommended cipher suite $BADCIPHER is used. Recommended cipher list is generated using SSL Configuration Generator with Mozilla Guideline v5.6, intermediate configuration (https://ssl-config.mozilla.org/).
     options:
       symbolic_propagation: true

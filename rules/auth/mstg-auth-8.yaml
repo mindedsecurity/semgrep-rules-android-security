@@ -10,7 +10,7 @@ rules:
       area: authentication
       verification-level: L2
       references:
-        - https://mobile-security.gitbook.io/mobile-security-testing-guide/android-testing-guide/0x05f-testing-local-authentication
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05f-Testing-Local-Authentication.md#testing-biometric-authentication-mstg-auth-8
     message: >-
       The Android application seems not properly implementig biometric authentication.
     patterns:
