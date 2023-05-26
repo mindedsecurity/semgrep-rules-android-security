@@ -1,0 +1,35 @@
+rules:
+  - id: mstg-code-8.5
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      company: IMQ Minded Security
+      author: Riccardo Cardelli (gand3lf)
+      owasp-mobile: M7
+      category: security
+      area: code
+      verification-level:
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#memory-corruption-bugs-mstg-code-8
+    message: The application uses non-static anonymous class "$IC" causing possible memory leaks.
+    options:
+      symbolic_propagation: true
+    patterns:
+      - pattern: |
+          class $C{
+            ...
+            class $IC extends Thread{
+              ...
+            }
+          }
+      - pattern-not: |
+          class $C{
+            ...
+            static class $IC extends Thread{
+              ...
+            }
+          }
+      - focus-metavariable:
+          - $IC

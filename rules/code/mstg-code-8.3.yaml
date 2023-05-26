@@ -1,0 +1,51 @@
+rules:
+  - id: mstg-code-8.3
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      company: IMQ Minded Security
+      author: Riccardo Cardelli (gand3lf)
+      owasp-mobile: M7
+      category: security
+      area: code
+      verification-level:
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#memory-corruption-bugs-mstg-code-8
+    message: The application uses dangerously inner classes that are prone to memory leak.
+    options:
+      symbolic_propagation: true
+    pattern-either:
+      - patterns:
+          - pattern: |
+              class $C{
+                static $INNER $X;
+                ...
+                $M(...){
+                  ...
+                  $X = new $INNER(...);
+                  ...
+                }
+                ...
+                class $INNER{...}
+                ...
+              }
+          - focus-metavariable:
+              - $INNER
+      - patterns:
+          - pattern: |
+              class $C{
+                ...
+                class $INNER{
+                  ...
+                  $F(...,$A $P, ...){...}
+                  ...
+                }
+                ...
+              }
+          - metavariable-regex:
+              metavariable: $A
+              regex: .*Activity
+          - focus-metavariable:
+              - $INNER
