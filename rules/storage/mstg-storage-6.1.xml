@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
     <protected-broadcast android:name="android.provider.action.EXTERNAL_PROVIDER_CHANGE" />
     <protected-broadcast android:name="android.intent.action.CONTENT_CHANGED" />
-    <!-- This permission is only used to send the ACTION_EXTERNAL_PROVIDER_CHANGE intent. -->
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
     <application android:process="com.android.phone"
                  android:allowClearUserData="false"
@@ -26,20 +25,14 @@
                   android:exported="true"
                   android:singleUser="true"
                   android:multiprocess="false" />
-        <!-- This is a singleton provider that is used by all users.
-             A new instance is not created for each user. And the db is shared
-             as well. -->
+
         <provider android:name="SmsProvider"
                   android:authorities="sms"
                   android:multiprocess="false"
                   android:exported="true"
                   android:singleUser="true"
                   android:readPermission="android.permission.READ_SMS" />
-        <!-- This is a singleton provider that is used by all users.
-             A new instance is not created for each user. And the db is shared
-             as well.
-             Note: We do not require a write permission as it is guarded by an app op.
-              -->
+ 
         <provider android:name="MmsProvider"
                   android:authorities="mms"
                   android:multiprocess="false"
@@ -49,9 +42,7 @@
             <grant-uri-permission android:pathPrefix="/part/" />
             <grant-uri-permission android:pathPrefix="/drm/" />
         </provider>
-        <!-- This is a singleton provider that is used by all users.
-             A new instance is not created for each user. And the db is shared
-             as well. -->
+
         <provider android:name="MmsSmsProvider"
                   android:authorities="mms-sms"
                   android:multiprocess="false"

@@ -1,18 +1,19 @@
 rules:
   - id: MSTG-AUTH-8
     severity: WARNING
-    languages: [java]
+    languages:
+      - java
     metadata:
       company: IMQ Minded Security
       author: Maurizio Siddu
       owasp-mobile: M1
       category: security
       area: authentication
-      verification-level: L2
+      verification-level: 
+        - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05f-Testing-Local-Authentication.md#testing-biometric-authentication-mstg-auth-8
-    message: >-
-      The Android application seems not properly implementig biometric authentication.
+    message: The application does not seem to properly implement biometric authentication.
     patterns:
       - pattern-either:
           - patterns:

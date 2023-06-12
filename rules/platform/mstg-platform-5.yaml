@@ -16,8 +16,7 @@ rules:
         - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-javascript-execution-in-webviews-mstg-platform-5
-    message: The application creates and uses the WebView object "$WV" enabling
-      Javascript execution in  them.
+    message: The application creates and uses the WebView object "$WV" with JavaScript execution enabled.
     patterns:
       - pattern: |
           WebView $WV = new WebView(...);

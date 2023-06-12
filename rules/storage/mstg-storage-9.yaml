@@ -5,16 +5,15 @@ rules:
       - java
     metadata:
       company: IMQ Minded Security
-      author: Riccardo Cardelli
-      owasp-mobile-top: M1
+      author: Riccardo Cardelli (gand3lf)
+      owasp-mobile: M1
       category: security
       area: storage
       verification-level: 
         - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05d-Testing-Data-Storage.md#finding-sensitive-information-in-auto-generated-screenshots-mstg-storage-9
-    message: >-
-      The appplication does not remove sensitive data from views when moved to the background.
+    message: The application does not remove sensitive data from views when moved to the background.
     patterns:
       - pattern-either:
         - pattern: getWindow().setFlags($P1, $P2)

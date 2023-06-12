@@ -1,5 +1,5 @@
 rules:
-  - id: mstg-platform-4.1
+  - id: MSTG-PLATFORM-4.1
     severity: WARNING
     languages:
       - java
@@ -14,8 +14,7 @@ rules:
         - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-for-sensitive-functionality-exposure-through-ipc-mstg-platform-4
-    message: Pending Intents must be declared as immutable and specify the exact
-      package, action, and component that will receive the base intent.
+    message: Pending Intents must be declared as immutable and specify the exact package, action, and component that will receive the base intent.
     patterns:
       - pattern-inside: |
           $T(...){

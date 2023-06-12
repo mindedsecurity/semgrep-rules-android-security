@@ -1,5 +1,5 @@
 rules:
-  - id: mstg-code-8.3
+  - id: MSTG-CODE-8.3
     severity: WARNING
     languages:
       - java

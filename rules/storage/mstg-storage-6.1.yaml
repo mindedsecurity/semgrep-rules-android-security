@@ -6,7 +6,7 @@ rules:
     metadata:
       company: IMQ Minded Security
       author: Riccardo Cardelli (gand3lf)
-      owasp-mobile-top: M3
+      owasp-mobile: M3
       category: security
       area: storage
       verification-level:
@@ -14,8 +14,7 @@ rules:
         - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05d-Testing-Data-Storage.md#determining-whether-sensitive-stored-data-has-been-exposed-via-ipc-mechanisms-mstg-storage-6
-    message: >-
-      The application potentially exposes sensitive data via IPC mechanisms.
+    message: The application may expose sensitive data via IPC mechanisms.
     paths:
       include:
         - "**/AndroidManifest.xml"

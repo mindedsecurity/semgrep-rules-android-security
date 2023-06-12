@@ -13,7 +13,7 @@ rules:
         - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05d-Testing-Data-Storage.md#testing-backups-for-sensitive-data-mstg-storage-8
-    message: The application allows automatic backup
+    message: The application allows automatic backup.
     paths:
       include:
         - "**/AndroidManifest.xml"

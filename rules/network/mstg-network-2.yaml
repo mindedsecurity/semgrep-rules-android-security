@@ -6,7 +6,7 @@ rules:
     metadata:
       company: IMQ Minded Security
       author: Giacomo Zorzin (gellge)
-      owasp-mobile-top: M3
+      owasp-mobile: M3
       category: security
       area: network
       verification-level:
@@ -36,7 +36,7 @@ rules:
     metadata:
       company: IMQ Minded Security
       author: Giacomo Zorzin (gellge)
-      owasp-mobile-top: M3
+      owasp-mobile: M3
       category: security
       area: network
       verification-level:

@@ -1,5 +1,5 @@
 rules:
-  - id: mstg-network-4.1
+  - id: MSTG-NETWORK-4.1
     severity: WARNING
     languages:
       - xml
