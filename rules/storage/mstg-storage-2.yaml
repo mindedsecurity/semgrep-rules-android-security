@@ -29,13 +29,13 @@ rules:
           - metavariable-comparison:
                 comparison: $M != 0
       # Use of unencrypted FileOutStream
-      - pattern-either:
-          - patterns:
-              - pattern: (FileOutputStream $S) = ...;
-              - pattern-not: (FileOutputStream $S) = (EncryptedFile $EF).$METHOD(...);
-          - patterns:
-              - pattern: (FileInputStream $S) = ...;
-              - pattern-not: (FileInputStream $S) = (EncryptedFile $EF).$METHOD(...);
+#      - pattern-either:
+#          - patterns:
+#              - pattern: (FileOutputStream $S) = ...;
+#              - pattern-not: (FileOutputStream $S) = (EncryptedFile $EF).$METHOD(...);
+#          - patterns:
+#              - pattern: (FileInputStream $S) = ...;
+#              - pattern-not: (FileInputStream $S) = (EncryptedFile $EF).$METHOD(...);
       # Interaction with external storage directories
       - patterns:
           - pattern: $X.$M(...)
