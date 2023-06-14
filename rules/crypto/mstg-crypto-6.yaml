@@ -19,22 +19,23 @@ rules:
       exclude: 
         - "**/math/**"
         - "**/Math/**"
+        - "**/kotlin/**"
+        - "**/com/google/**"
+        - "**/org/apache/**"
+        - "**/androidx/**"
+        - "**/dexguard/**"
     pattern-either:
-        - pattern: (java.util.Random $X).$Y(...)
-        - pattern: Math.random(...)
-        # Specify a seed may reduce the randomness
-        - pattern: new SecureRandom($SEED);
-        # Detect custom insecure random implementation
         - patterns:
-            - pattern: $M(...){ ... }
-            - pattern-not: |
-                $M(...){ ...
-                  (SecureRandom $X).$Y(...);
-                ... }
-            - pattern-not: |
-                $M(...){ ...
-                  SecureRandom.$Y(...);
-                ... }
+            - pattern-inside: $M(...){ ... }
+            - pattern-either:
+                - pattern: Math.random(...)
+                - pattern: (java.util.Random $X).$Y(...)
+                - pattern: new Date()
+                - pattern: System.currentTimeMillis()
+                - pattern: (Calendar $C).get(...)
             - metavariable-regex:
                 metavariable: $M
-                regex: .*(?i)(random).*
+                regex: .*(?i)(random|gen).*
+        # Specify a seed may reduce the randomness
+        - pattern: new SecureRandom($SEED);
+
