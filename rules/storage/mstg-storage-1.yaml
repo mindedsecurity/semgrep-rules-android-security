@@ -15,17 +15,10 @@ rules:
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05d-Testing-Data-Storage.md#testing-local-storage-for-sensitive-data-mstg-storage-1-and-mstg-storage-2
     message: The application stores credentials outside the Android Keystore.
-    pattern-either:
-      - patterns:
-        - pattern-either:
+    patterns:
+      - pattern-either:
           - pattern: <string name="$S" />
           - pattern: <array name="$S" />
-        - metavariable-regex:
-            metavariable: $S
-            regex: .*(?i)(key|secret|password|pwd|passwd|token|salt|seed|salt|bearer|auth|otp|crypt(?-i)|IV).*
-      - patterns:
-        - pattern: <string>$X</string>
-        - metavariable-analysis:
-            analyzer: entropy
-            metavariable: $X
-        - pattern-not: <string name="=~/.*hash.*/"></string>
+      - metavariable-regex:
+          metavariable: $S
+          regex: .*(?i)(key|secret|password|pwd|passwd|token|salt|seed|salt|bearer|auth|otp|crypt(?-i)|IV).*
