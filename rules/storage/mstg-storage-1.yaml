@@ -15,6 +15,9 @@ rules:
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05d-Testing-Data-Storage.md#testing-local-storage-for-sensitive-data-mstg-storage-1-and-mstg-storage-2
     message: The application stores credentials outside the Android Keystore.
+    paths:
+      exclude:
+        - "**/values-*/**"
     patterns:
       - pattern-either:
           - pattern: <string name="$S" />
