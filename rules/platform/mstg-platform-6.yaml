@@ -1,5 +1,5 @@
 rules:
-  - id: MSTG-PLATFORM-5
+  - id: MSTG-PLATFORM-6
     severity: WARNING
     languages:
       - java
