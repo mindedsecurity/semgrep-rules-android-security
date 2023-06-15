@@ -20,8 +20,11 @@ rules:
         - "**/values-*/**"
     patterns:
       - pattern-either:
-          - pattern: <string name="$S" />
-          - pattern: <array name="$S" />
+          - pattern: <string name="$S">$X</string>
+          - pattern: <array name="$S"><item>$X</item></array>
       - metavariable-regex:
           metavariable: $S
           regex: .*(?i)(key|secret|password|pwd|passwd|token|salt|seed|salt|bearer|auth|otp|crypt(?-i)|IV).*
+      - metavariable-analysis:
+          analyzer: entropy
+          metavariable: $X
