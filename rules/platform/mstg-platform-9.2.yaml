@@ -1,5 +1,5 @@
 rules:
-  - id: MSTG-PLATFORM-9
+  - id: MSTG-PLATFORM-9.2
     severity: WARNING
     languages: 
       - xml

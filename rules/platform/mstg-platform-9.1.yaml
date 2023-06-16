@@ -1,13 +1,13 @@
 rules:
-  - id: MSTG-PLATFORM-9
+  - id: MSTG-PLATFORM-9.1
     severity: WARNING
     languages:
       - java
     metadata:
       company: IMQ Minded Security
       author: 
-         - Michele Tumolo
-         - Giovanni Fazi
+        - Michele Tumolo
+        - Giovanni Fazi
       owasp-mobile: M2
       category: security
       area: platform
