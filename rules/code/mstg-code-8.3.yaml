@@ -14,25 +14,24 @@ rules:
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#memory-corruption-bugs-mstg-code-8
     message: The application uses dangerously inner classes that are prone to memory leak.
-    options:
-      symbolic_propagation: true
     pattern-either:
-      - patterns:
-          - pattern: |
-              class $C{
-                static $INNER $X;
-                ...
-                $M(...){
-                  ...
-                  $X = new $INNER(...);
-                  ...
-                }
-                ...
-                class $INNER{...}
-                ...
-              }
-          - focus-metavariable:
-              - $INNER
+# Removed for performance reasons
+#      - patterns:
+#          - pattern: |
+#              class $C{
+#                static $INNER $X;
+#                ...
+#                $M(...){
+#                  ...
+#                  $X = new $INNER(...);
+#                  ...
+#                }
+#                ...
+#                class $INNER{...}
+#                ...
+#              }
+#          - focus-metavariable:
+#              - $INNER
       - patterns:
           - pattern: |
               class $C{
