@@ -1,18 +1,20 @@
 rules:
   - id: MSTG-CRYPTO-4
     severity: WARNING
-    languages: [java]
+    languages:
+      - java
     metadata:
       company: IMQ Minded Security
       author: Maurizio Siddu
       owasp-mobile: M5
       category: security
       area: cryptography
-      verification-level: ["L1","L2"]
+      verification-level: 
+        - L1
+        - L2
       references:
-        - https://mobile-security.gitbook.io/mobile-security-testing-guide/android-testing-guide/0x05e-testing-cryptography
-    message: >-
-      The Android application is using a deprecated cryptographic algorithm.
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x04g-Testing-Cryptography.md#identifying-insecure-andor-deprecated-cryptographic-algorithms-mstg-crypto-4
+    message: The application uses deprecated cryptographic algorithms.
     patterns:
       - pattern-either:
           - patterns: 
