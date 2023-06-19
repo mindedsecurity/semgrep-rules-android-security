@@ -1,4 +1,4 @@
-# Semgrep rules for Android Application Security
+# Semgrep Rules for Android Application Security
 
 [![Owasp-MASTG](https://img.shields.io/badge/OWASP_MASTG-v1.5.0-blue)](https://github.com/OWASP/owasp-mastg/tree/v1.5.0)
 [![Semgrep](https://img.shields.io/badge/Semgrep-v1.17.1-green)](https://semgrep.dev/)
