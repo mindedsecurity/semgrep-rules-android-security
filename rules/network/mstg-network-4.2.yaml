@@ -1,0 +1,35 @@
+rules:
+  - id: MSTG-NETWORK-4.2
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      company: IMQ Minded Security
+      author: Riccardo Cardelli (gand3lf)
+      owasp-mobile: M3
+      category: security
+      area: network
+      verification-level:
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-for-debugging-code-and-verbose-error-logging-mstg-code-4
+    message: The application may not implement correctly the SSL Pinning.
+    options:
+      symbolic_propagation: true
+    pattern-either:
+      - pattern: (SSLContext $X).init(null, null, null);
+      - pattern: (TrustManagerFactory $X).init(null);
+      - patterns:
+          - pattern: new CertificatePinner.Builder().add("$D", "$P")
+          - metavariable-regex:
+              metavariable: $P
+              regex: .*(?i)(sha1/).*
+      - patterns:
+          - pattern: |
+              HttpsURLConnection $X = ...;
+              ...
+              $X.connect();
+          - pattern-not: |
+              HttpsURLConnection $X = ...;
+              urlConnection.setSSLSocketFactory(...);
+              $X.connect();

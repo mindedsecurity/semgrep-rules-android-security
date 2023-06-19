@@ -1,0 +1,26 @@
+rules:
+  - id: MSTG-CODE-8.4
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      company: IMQ Minded Security
+      author: Riccardo Cardelli (gand3lf)
+      owasp-mobile: M7
+      category: security
+      area: code
+      verification-level:
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#memory-corruption-bugs-mstg-code-8
+    message: The application uses the activity context to display toasts potentially causing memory leaks.
+    options:
+      symbolic_propagation: true
+    patterns:
+      - pattern-inside: |
+          class $C extends $CC{...}
+      - metavariable-regex:
+          metavariable: $CC
+          regex: .*Activity.*
+      - pattern: Toast.makeText(...);
+      - pattern-not: Toast.makeText(getApplicationContext(), ...);

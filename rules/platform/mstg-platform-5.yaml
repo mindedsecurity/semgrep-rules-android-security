@@ -1,0 +1,31 @@
+rules:
+  - id: MSTG-PLATFORM-5
+    severity: WARNING
+    options:
+      symbolic_propagation: true
+    languages:
+      - java
+    metadata:
+      company: IMQ Minded Security
+      author: Christian Cotignola (b4dsheep)
+      owasp-mobile: M1
+      category: security
+      area: platform
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-javascript-execution-in-webviews-mstg-platform-5
+    message: The application creates and uses the WebView object "$WV" with JavaScript execution enabled.
+    patterns:
+      - pattern: |
+          WebView $WV = new WebView(...);
+          ...
+          setContentView($WV);
+          ...
+      - pattern: |
+          WebView $WV = new WebView(...);
+          ...
+          $WV.getSettings().setJavaScriptEnabled(true);
+      - focus-metavariable:
+          - $WV

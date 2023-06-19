@@ -1,0 +1,64 @@
+rules:
+  - id: MSTG-PLATFORM-6
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      company: IMQ Minded Security
+      author: Christian Cotignola (b4dsheep)
+      owasp-mobile: M1
+      category: security
+      area: platform
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-webview-protocol-handlers-mstg-platform-6
+    message: WebView can load remote content from an endpoint or local file system in an unsafe manner.
+    options:
+      symbolic_propagation: true
+    pattern-either:
+      - patterns:
+          - pattern: |
+              WebView $WV = ...;
+              ...
+              $WV.loadUrl("$X");
+          - metavariable-regex:
+              metavariable: $X
+              regex: ^(?!https?).*:\/\/.+$
+      - patterns:
+          - pattern: |
+              WebView $WV = new WebView(...);
+              ...
+          - pattern-not-inside: |
+              WebView $WV = $G;
+              ...
+              $WV.getSettings().setAllowFileAccess(false);
+              ...
+      - patterns:
+          - pattern: |
+              WebView $WV = new WebView(...);
+              ...
+          - pattern-not-inside: |
+              WebView $WV = $G;
+              ...
+              $WV.getSettings().setAllowFileAccessFromFileURLs(false);
+              ...
+      - patterns:
+          - pattern: |
+              WebView $WV = new WebView(...);
+              ...
+          - pattern-not-inside: |
+              WebView $WV = $G;
+              ...
+              $WV.getSettings().setAllowUniversalAccessFromFileURLs(false);
+              ...
+      - patterns:
+          - pattern: |
+              WebView $WV = new WebView(...);
+              ...
+          - pattern-not-inside: |
+              WebView $WV = $G;
+              ...
+              $WV.getSettings().setAllowContentAccess(false);
+              ...

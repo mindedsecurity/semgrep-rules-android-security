@@ -1,1 +1,70 @@
-# semgrep_android_rules
+# Semgrep Rules for Android Application Security
+
+[![Owasp-MASTG](https://img.shields.io/badge/OWASP_MASTG-v1.5.0-blue)](https://github.com/OWASP/owasp-mastg/tree/v1.5.0)
+[![Semgrep](https://img.shields.io/badge/Semgrep-v1.17.1-green)](https://semgrep.dev/)
+[![License](https://img.shields.io/badge/License-GPL3.0-orange)](https://www.gnu.org/licenses/gpl-3.0.html)
+
+This project is a compilation of [Semgrep](https://semgrep.dev/) rules derived from the OWASP Mobile Application Security Testing Guide ([MASTG](https://mas.owasp.org/MASTG/)) specifically for Android applications.  
+The aim is to enhance and support Mobile Application Penetration Testing (MAPT) activities conducted by the ethical hacker community.
+The primary objective of these rules is to address the static tests outlined in the OWASP MASTG. Consequently, dynamic tests are considered out of this project scope.  
+These rules are designed from the perspective of a penetration tester and do not include checks related to configuration files that are not usually embedded in the Android App Package (APK), such as the "build.gradle" file.
+The intended source code for analysis using these Semgrep rules is the decompiled code from the target APK.
+
+_Why Semgrep?_  
+Semgrep stands out as a powerful static analysis tool utilized for identifying specific patterns within the target source code. With its self-explanatory syntax, it offers multiple mechanisms to conduct thorough intra-file analysis. Semgrep is an open source project and offers patterns to conduct taint analysis, source code recognition, variable comparison and string heuristics on a large set of programming languages. Importantly, it eliminates the requirement of uploading source code to cloud platforms.  
+Thanks to these features, Semgrep is highly suitable for Static Application Security Testing (SAST) activities.  
+
+### Installation & Usage :wrench:  
+First, install Semgrep CLI with one of the following commands([installation guide](https://semgrep.dev/docs/getting-started/)):
+```bash
+# For macOS
+$ brew install semgrep
+
+# For Ubuntu/WSL/Linux/macOS
+$ python3 -m pip install semgrep
+
+# To try Semgrep without installation run via Docker
+$ docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep
+```
+
+Extract and analize the target source code using [JADX](https://github.com/skylot/jadx):
+
+```bash
+# Download the target APK and the rules of the current project 
+$ ls
+target.apk semgrep_for_android/
+# Retrieve the source code from the APK file
+$ jadx -d target_src target.apk
+# Run Semgrep with the new security rules
+$ semgrep -c semgrep_for_android/rules/ target_src/
+```
+
+_Performance tip: Using the entire set of rules on your target code can be computationally expensive. Therefore, it is suggested to scan only the relevant code, e.g. by excluding the code belonging to well-known libraries._
+
+### Project Status
+The rules are aligned with the version [1.5.0](https://github.com/OWASP/owasp-mastg/tree/v1.5.0) of the OWASP MASTG. While complete coverage of all tests cannot be guaranteed, the authors have made significant efforts to provide a comprehensive overview of the status of each implemented rule.  
+The presence of False Positives (FP) is expected but limited and efforts have been done to reduce the potential occurrence of False Negatives (FN).
+
+The grade of maturity and the reliability of each rule has been classified according to the following categories:  
+:heavy_check_mark: Complete: the rule is highly reliable, although there may be some false positives.  
+:thumbsup: Good: the rule is reliable but there may be false negatives.  
+:broken_heart: Partial: the rule does not sufficiently cover all static tests.  
+:sweat_smile: Tentative: the rule is based on a generous simplification of the static tests.  
+:x: Infeasible: the rule can not be implemented with Semgrep.  
+
+For further information about the status of each rule, it is possible to visit the [**STATUS PAGE**](./status.md).
+
+### Limitations :raised_hands:  
+Semgrep is a well-supported and continuously improved tool but it is not free from limitations. The most significant one, discovered during the implementation of this project, is the inability to check for the absence of a pattern in a multi-file source code. As a result, it is not possible to verify the presence of a specific protection without first selecting the specific file that should contain the searched protection.  
+For these reasons, the category "resilience" of the MASTG has been omitted from the initial versions of the current project.  
+_(Visit the link for further information: https://github.com/returntocorp/semgrep/issues/7363)_  
+
+Moreover, the rules that requires a specific knowledge of the application context have been classified as "Infeasible" since the current project is designed to be used automatically. For example, it is not possible to discern if a specific link is external from the application infrastructure or not.
+
+### Authors & Contributors :beers: :it:  
+The project was started in March 2023 by the [**IMQ Minded Security**](https://mindedsecurity.com/) team with the purpose to contribute to the ethical hacking and mobile development communities. The company has an ongoing commitment to make customers aware of cyber risks supporting businesses and organizations to build secure products and services.  
+The contribution to this project is totally open with the recommendation to be careful in submitting rules that respect the proposed format.
+- Supervisor: Stefano Di Paola (@WisecWisec)
+- Project leader: Riccardo Cardelli (@gand3lf)
+- Contributors: Andrea Agnello, Christian Cotignola (@b4dsheep), Giacomo Zorzin (@gellge), Giovanni Fazi (@giovifazi), Martino Lessio (@mlessio), Maurizio Siddu (@akabe1), Michele Di Bonaventura (@cyberaz0r), Michele Tumolo, Riccardo Granata
+
