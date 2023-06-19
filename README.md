@@ -65,5 +65,7 @@ Moreover, the rules that requires a specific knowledge of the application contex
 ### Authors & Contributors :beers: :it:  
 The project was started in March 2023 by the [**IMQ Minded Security**](https://mindedsecurity.com/) team with the purpose to contribute to the ethical hacking and mobile development communities. The company has an ongoing commitment to make customers aware of cyber risks supporting businesses and organizations to build secure products and services.  
 The contribution to this project is totally open with the recommendation to be careful in submitting rules that respect the proposed format.
-
+- Supervisor: Stefano Di Paola (@WisecWisec)
+- Project leader: Riccardo Cardelli (@gand3lf)
+- Contributors: Andrea Agnello, Christian Cotignola (@b4dsheep), Giacomo Zorzin (@gellge), Giovanni Fazi (@giovifazi), Martino Lessio (@mlessio), Maurizio Siddu (@akabe1), Michele Di Bonaventura (@cyberaz0r), Michele Tumolo, Riccardo Granata
 
