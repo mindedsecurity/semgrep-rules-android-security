@@ -14,20 +14,6 @@ _Why Semgrep?_
 Semgrep stands out as a powerful static analysis tool utilized for identifying specific patterns within the target source code. With its self-explanatory syntax, it offers multiple mechanisms to conduct thorough intra-file analysis. Semgrep is an open source project and offers patterns to conduct taint analysis, source code recognition, variable comparison and string heuristics on a large set of programming languages. Importantly, it eliminates the requirement of uploading source code to cloud platforms.  
 Thanks to these features, Semgrep is highly suitable for Static Application Security Testing (SAST) activities.  
 
-_What is the project status?_  
-The rules are aligned with the version [1.5.0](https://github.com/OWASP/owasp-mastg/tree/v1.5.0) of the OWASP MASTG. While complete coverage of all tests cannot be guaranteed, the authors have made significant efforts to provide a comprehensive overview of the status of each implemented rule.  
-The presence of False Positives (FP) is expected but limited and efforts have been done to reduce the potential occurrence of False Negatives (FN).
-
-The grade of maturity and the reliability of each rule has been classified according to the following categories:  
-:heavy_check_mark: Complete: the rule is highly reliable, although there may be some false positives.  
-:thumbsup: Good: the rule is reliable but there may be false negatives.  
-:broken_heart: Partial: the rule does not sufficiently cover all static tests.  
-:sweat_smile: Tentative: the rule is based on a generous simplification of the static tests.  
-:x: Infeasible: the rule can not be implemented with Semgrep.  
-
-For further information about the status of each rule, it is possible to visit the [status page](./status.md).
-
-
 ### Installation & Usage :wrench:  
 First, install Semgrep CLI with one of the following commands([installation guide](https://semgrep.dev/docs/getting-started/)):
 ```bash
@@ -54,6 +40,19 @@ $ semgrep -c semgrep_for_android/rules/ target_src/
 ```
 
 _Performance tip: Using the entire set of rules on your target code can be computationally expensive. Therefore, it is suggested to scan only the relevant code, e.g. by excluding the code belonging to well-known libraries._
+
+### Project Status
+The rules are aligned with the version [1.5.0](https://github.com/OWASP/owasp-mastg/tree/v1.5.0) of the OWASP MASTG. While complete coverage of all tests cannot be guaranteed, the authors have made significant efforts to provide a comprehensive overview of the status of each implemented rule.  
+The presence of False Positives (FP) is expected but limited and efforts have been done to reduce the potential occurrence of False Negatives (FN).
+
+The grade of maturity and the reliability of each rule has been classified according to the following categories:  
+:heavy_check_mark: Complete: the rule is highly reliable, although there may be some false positives.  
+:thumbsup: Good: the rule is reliable but there may be false negatives.  
+:broken_heart: Partial: the rule does not sufficiently cover all static tests.  
+:sweat_smile: Tentative: the rule is based on a generous simplification of the static tests.  
+:x: Infeasible: the rule can not be implemented with Semgrep.  
+
+For further information about the status of each rule, it is possible to visit the [**STATUS PAGE**](./status.md).
 
 ### Limitations :raised_hands:  
 Semgrep is a well-supported and continuously improved tool but it is not free from limitations. The most significant one, discovered during the implementation of this project, is the inability to check for the absence of a pattern in a multi-file source code. As a result, it is not possible to verify the presence of a specific protection without first selecting the specific file that should contain the searched protection.  
