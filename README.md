@@ -1,7 +1,7 @@
 # Semgrep Rules for Android Application Security
 
 [![Owasp-MASTG](https://img.shields.io/badge/OWASP_MASTG-v1.5.0-blue)](https://github.com/OWASP/owasp-mastg/tree/v1.5.0)
-[![Semgrep](https://img.shields.io/badge/Semgrep-v1.17.1-green)](https://semgrep.dev/)
+[![Semgrep](https://img.shields.io/badge/Semgrep-v1.27.0-green)](https://semgrep.dev/)
 [![License](https://img.shields.io/badge/License-GPL3.0-orange)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 This project is a compilation of [Semgrep](https://semgrep.dev/) rules derived from the OWASP Mobile Application Security Testing Guide ([MASTG](https://mas.owasp.org/MASTG/)) specifically for Android applications.  
@@ -50,12 +50,12 @@ The grade of maturity and the reliability of each rule has been classified accor
 :thumbsup: Good: the rule is reliable but there may be false negatives.  
 :broken_heart: Partial: the rule does not sufficiently cover all static tests.  
 :sweat_smile: Tentative: the rule is based on a generous simplification of the static tests.  
-:x: Infeasible: the rule can not be implemented with Semgrep.  
+:x: Infeasible: the rule can not be implemented with the current free version of Semgrep.  
 
 For further information about the status of each rule, it is possible to visit the [**STATUS PAGE**](./status.md).
 
 ### Limitations :raised_hands:  
-Semgrep is a well-supported and continuously improved tool but it is not free from limitations. The most significant one, discovered during the implementation of this project, is the inability to check for the absence of a pattern in a multi-file source code. As a result, it is not possible to verify the presence of a specific protection without first selecting the specific file that should contain the searched protection.  
+Semgrep is a well-supported and continuously improved tool but the current free version is not devoid of limitations. The most significant one, discovered during the implementation of this project, is the inability to check for the absence of a pattern in a multi-file source code. As a result, it is not possible to verify the presence of a specific protection without first selecting the specific file that should contain the searched protection.  
 For these reasons, the category "resilience" of the MASTG has been omitted from the initial versions of the current project.  
 _(Visit the link for further information: https://github.com/returntocorp/semgrep/issues/7363)_  
 
@@ -66,5 +66,5 @@ The project was started in March 2023 by the [**IMQ Minded Security**](https://m
 The contribution to this project is totally open with the recommendation to be careful in submitting rules that respect the proposed format.
 - Supervisor: Stefano Di Paola (@WisecWisec)
 - Project leader: Riccardo Cardelli (@gand3lf)
-- Contributors: Andrea Agnello, Christian Cotignola (@b4dsheep), Giacomo Zorzin (@gellge), Giovanni Fazi (@giovifazi), Martino Lessio (@mlessio), Maurizio Siddu (@akabe1), Michele Di Bonaventura (@cyberaz0r), Michele Tumolo, Riccardo Granata
+- Contributors: Andrea Agnello, Christian Cotignola (@b4dsheep), Giacomo Zorzin (@gellge), Giovanni Fazi (@giovifazi), Martino Lessio (@mlessio), Maurizio Siddu (@akabe1), Michele Di Bonaventura (@cyberaz0r), Michele Tumolo (@zer0s0urce), Riccardo Granata
 
