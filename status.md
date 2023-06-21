@@ -1,3 +1,16 @@
+### Project Status
+
+The rules are aligned with the version [1.5.0](https://github.com/OWASP/owasp-mastg/tree/v1.5.0) of the OWASP MASTG. While complete coverage of all tests cannot be guaranteed, the authors have made significant efforts to provide a comprehensive overview of the status of each implemented rule.  
+The presence of False Positives (FP) is expected but limited and efforts have been done to reduce the potential occurrence of False Negatives (FN).
+
+The grade of maturity and the reliability of each rule has been classified according to the following categories:  
+:heavy_check_mark: Complete: the rule is highly reliable, although there may be some false positives.  
+:thumbsup: Good: the rule is reliable but there may be false negatives.  
+:broken_heart: Partial: the rule does not sufficiently cover all static tests.  
+:sweat_smile: Tentative: the rule is based on a generous simplification of the static tests.  
+:x: Infeasible: the rule can not be implemented with the current free version of Semgrep.  
+
+
 | MASVS-ID           | Requirement                                                                                                                                                                                                                              | L1/L2/R | Status     |   |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------------- | ---- |
 | MSTG-ARCH-9        | A mechanism for enforcing updates of the mobile app exists.                                                                                                                                                                              | L2      | Good    | :thumbsup:|
