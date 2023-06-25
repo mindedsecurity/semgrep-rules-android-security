@@ -19,6 +19,11 @@ rules:
       - patterns:
           - pattern: <pin-set ... />
           - pattern-not: <pin-set expiration="..." />
+# Pin expired
+      - patterns:
+          - pattern: <pin-set expiration="$X" />
+          - metavariable-comparison:
+              comparison: strptime($X) < today()
 # Backup pin not present
       - patterns:
           - pattern: <pin-set ... />
