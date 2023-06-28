@@ -36,6 +36,9 @@ rules:
             - metavariable-regex:
                 metavariable: $M
                 regex: .*(?i)(random|gen).*
+            - metavariable-regex:
+                metavariable: $M
+                regex: ^((?!(?i)Log).)*$
         # Specify a seed may reduce the randomness
         - pattern: new SecureRandom($SEED);
 
