@@ -32,7 +32,7 @@ $ jadx -d target_src target.apk
 # To use the .semgrepignore file launch the scan from the project folder
 $ cd semgrep_for_android/
 # Run Semgrep with the new security rules
-$ semgrep -c ./rules/ target_src/
+$ semgrep -c ./rules/ ../target_src/
 ```
 
 Performance tips:
