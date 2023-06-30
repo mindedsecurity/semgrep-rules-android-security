@@ -1,8 +1,11 @@
 **/android/**
 **/androidx/**
 **/kotlin/**
+**/kotlinx/**
 **/firebase/**
 **/google/**
 **/okhttp3/**
 **/retrofit/**
 **/squareup/**
+**/bouncycastle/**
+**/apache/**

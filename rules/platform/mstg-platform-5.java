@@ -1,12 +1,13 @@
 public class MainActivity extends AppCompatActivity {
+    WebView webView;
   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WebView webview = new WebView(this);
-        WebSettings settings = webview.getSettings();
+        webView = new WebView(this);
+        WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
-        setContentView(webview);
+        setContentView(webView);
         
         WebView webview2 = new WebView(this);
         setContentView(webview2);

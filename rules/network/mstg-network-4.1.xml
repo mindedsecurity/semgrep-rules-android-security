@@ -7,6 +7,11 @@
             <pin digest="SHA-256">7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=</pin>
             <!-- missing backup pin -->
         </pin-set>
+        <!-- Expired pin -->
+        <pin-set expiration="2019-01-01">
+            <pin digest="SHA-256">7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=</pin>
+            <pin digest="SHA-256">7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=</pin>
+        </pin-set>
     </domain-config>
     <base-config>
         <trust-anchors>

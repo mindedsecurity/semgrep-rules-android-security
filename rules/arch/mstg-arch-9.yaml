@@ -13,7 +13,7 @@ rules:
         - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-enforced-updating-mstg-arch-9
-    message: The activity main activity does not implement a mechanism for enforcing updates.
+    message: The main activity does not implement a mechanism for enforcing updates.
     mode: join
     join:
         rules:
