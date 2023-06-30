@@ -17,17 +17,11 @@ Thanks to these features, Semgrep is highly suitable for Static Application Secu
 ### Installation & Usage :wrench:  
 First, install Semgrep CLI with one of the following commands([installation guide](https://semgrep.dev/docs/getting-started/)):
 ```bash
-# For macOS
-$ brew install semgrep
-
 # For Ubuntu/WSL/Linux/macOS
 $ python3 -m pip install semgrep
-
-# To try Semgrep without installation run via Docker
-$ docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep
 ```
 
-Extract and analize the target source code using [JADX](https://github.com/skylot/jadx):
+Extract and scan the target source code using [JADX](https://github.com/skylot/jadx):
 
 ```bash
 # Download the target APK and the rules of the current project 
@@ -35,11 +29,16 @@ $ ls
 target.apk semgrep_for_android/
 # Retrieve the source code from the APK file
 $ jadx -d target_src target.apk
+# To use the .semgrepignore file launch the scan from the project folder
+$ cd semgrep_for_android/
 # Run Semgrep with the new security rules
-$ semgrep -c semgrep_for_android/rules/ target_src/
+$ semgrep -c ./rules/ target_src/
 ```
 
-_Performance tip: Using the entire set of rules on your target code can be computationally expensive. Therefore, it is suggested to scan only the relevant code, e.g. by excluding the code belonging to well-known libraries._
+Performance tips:
+> _1. Using the entire set of rules on your target code can be computationally expensive. Therefore, it is suggested to scan only the relevant code, e.g. by excluding the code belonging to well-known libraries._  
+
+>_2. Make sure to launch the scan from the project folder in order to use the provided ".semgrepignore" file. This prevents scanning well-known libraries that could generate a high number of false positives._
 
 ### Project Status
 The rules are aligned with the version [1.5.0](https://github.com/OWASP/owasp-mastg/tree/v1.5.0) of the OWASP MASTG. While complete coverage of all tests cannot be guaranteed, the authors have made significant efforts to provide a comprehensive overview of the status of each implemented rule.  
