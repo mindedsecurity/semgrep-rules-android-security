@@ -1,0 +1,45 @@
+rules:
+  - id: MSTG-PLATFORM-6.2
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      company: HN Security
+      author: Federico Dotta (apps3c)
+      owasp-mobile: M1
+      category: security
+      area: platform
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-webview-protocol-handlers-mstg-platform-6
+    message: >-
+        WebView can load remote content from an endpoint or local file system in an unsafe manner. 
+        Review WebView usage and evaluate whether or not the WebView should have resource access. 
+        If resource access is necessary you need to verify that it’s implemented following best practices.
+    pattern-either:      
+      - patterns: 
+        - pattern: $WEBVIEW.setAllowContentAccess(...)
+        - pattern-not: $WEBVIEW.setAllowContentAccess(false)
+      - patterns: 
+        - pattern: setAllowContentAccess(...)
+        - pattern-not: setAllowContentAccess(false)
+      - patterns: 
+        - pattern: $WEBVIEW.setAllowFileAccess(...)
+        - pattern-not: $WEBVIEW.setAllowFileAccess(false)
+      - patterns: 
+        - pattern: setAllowFileAccess(...)
+        - pattern-not: setAllowFileAccess(false)
+      - patterns: 
+        - pattern: $WEBVIEW.setAllowFileAccessFromFileURLs(...)
+        - pattern-not: $WEBVIEW.setAllowFileAccessFromFileURLs(false)
+      - patterns: 
+        - pattern: setAllowFileAccessFromFileURLs(...)
+        - pattern-not: setAllowFileAccessFromFileURLs(false)
+      - patterns: 
+        - pattern: $WEBVIEW.setAllowUniversalAccessFromFileURLs(...)
+        - pattern-not: $WEBVIEW.setAllowUniversalAccessFromFileURLs(false)
+      - patterns: 
+        - pattern: setAllowUniversalAccessFromFileURLs(...)
+        - pattern-not: setAllowUniversalAccessFromFileURLs(false)
