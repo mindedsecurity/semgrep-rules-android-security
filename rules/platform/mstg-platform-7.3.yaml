@@ -15,9 +15,16 @@ rules:
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#determining-whether-java-objects-are-exposed-through-webviews-mstg-platform-7
     message: The class "$X" is accessible from the WebView of class "$WV".
-    patterns: 
-      - pattern-inside: |
-          class $WV {
-            ...
-          }
-      - pattern: addJavascriptInterface(($X $CLASS),$Y);
+    pattern-either:
+      - patterns: 
+        - pattern-inside: |
+            class $WV {
+              ...
+            }
+        - pattern: addJavascriptInterface(($X $CLASS),$Y);
+      - patterns: 
+        - pattern-inside: |
+            class $WV {
+              ...
+            }
+        - pattern: this.addJavascriptInterface(($X $CLASS),$Y);        
