@@ -15,29 +15,23 @@ rules:
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-webview-protocol-handlers-mstg-platform-6
     message: >-
-        The WebView allows to load external content. It is suggested to verify that the granted accesses are necessary and follow the best practices.
-    pattern-either:      
-      - patterns: 
-        - pattern: $WEBVIEW.setAllowContentAccess(...)
-        - pattern-not: $WEBVIEW.setAllowContentAccess(false)
-      - patterns: 
-        - pattern: setAllowContentAccess(...)
-        - pattern-not: setAllowContentAccess(false)
-      - patterns: 
-        - pattern: $WEBVIEW.setAllowFileAccess(...)
-        - pattern-not: $WEBVIEW.setAllowFileAccess(false)
-      - patterns: 
-        - pattern: setAllowFileAccess(...)
-        - pattern-not: setAllowFileAccess(false)
-      - patterns: 
-        - pattern: $WEBVIEW.setAllowFileAccessFromFileURLs(...)
-        - pattern-not: $WEBVIEW.setAllowFileAccessFromFileURLs(false)
-      - patterns: 
-        - pattern: setAllowFileAccessFromFileURLs(...)
-        - pattern-not: setAllowFileAccessFromFileURLs(false)
-      - patterns: 
-        - pattern: $WEBVIEW.setAllowUniversalAccessFromFileURLs(...)
-        - pattern-not: $WEBVIEW.setAllowUniversalAccessFromFileURLs(false)
-      - patterns: 
-        - pattern: setAllowUniversalAccessFromFileURLs(...)
-        - pattern-not: setAllowUniversalAccessFromFileURLs(false)
+        WebView can load remote content from an endpoint or local file system in an unsafe manner. 
+        Review WebView usage and evaluate whether or not the WebView should have resource access. 
+        If resource access is necessary you need to verify that it’s implemented following best practices.
+    options:
+      symbolic_propagation: true    
+    patterns:
+      - pattern-either:
+        - patterns:
+          - pattern: $B(...)
+          - pattern-not: $B(false)
+        - patterns:
+          - pattern: $A.$B(...)
+          - pattern-not: $A.$B(false)
+      - metavariable-pattern:
+          metavariable: $B
+          pattern-either:
+            - pattern: setAllowContentAccess
+            - pattern: setAllowFileAccess
+            - pattern: setAllowFileAccessFromFileURLs
+            - pattern: setAllowUniversalAccessFromFileURLs
