@@ -4,8 +4,8 @@ rules:
     languages:
       - java
     metadata:
-      company: HN Security
-      author: Federico Dotta (apps3c)
+      authors:
+        - Federico Dotta @apps3c (HN Security)
       owasp-mobile: M1
       category: security
       area: platform
@@ -15,10 +15,10 @@ rules:
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-webview-protocol-handlers-mstg-platform-6
     message: >-
-        The WebView allows to load external content. It is suggested to verify that the granted 
+        The WebView allows to load external content. It is suggested to verify that the granted
         accesses are necessary and follow the best practices.
     options:
-      symbolic_propagation: true    
+      symbolic_propagation: true
     patterns:
       - pattern-either:
         - patterns:

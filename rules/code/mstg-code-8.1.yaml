@@ -4,8 +4,8 @@ rules:
     languages:
       - java
     metadata:
-      company: IMQ Minded Security
-      author: Riccardo Cardelli (gand3lf)
+      authors:
+        - Riccardo Cardelli @gand3lf (IMQ Minded Security)
       owasp-mobile: M7
       category: security
       area: code

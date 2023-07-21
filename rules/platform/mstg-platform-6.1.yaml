@@ -4,8 +4,8 @@ rules:
     languages:
       - java
     metadata:
-      company: IMQ Minded Security
-      author: Christian Cotignola (b4dsheep)
+      authors:
+        - Christian Cotignola @b4dsheep (IMQ Minded Security)
       owasp-mobile: M1
       category: security
       area: platform
@@ -35,10 +35,10 @@ rules:
                   loadUrl("$Y");
                   ...
                 }
-              }    
+              }
           - metavariable-regex:
               metavariable: $Y
-              regex: ^(?!https?).*:\/\/.+$  
+              regex: ^(?!https?).*:\/\/.+$
       - patterns:
           - pattern: |
               class $WV extends WebView {
@@ -48,10 +48,10 @@ rules:
                   this.loadUrl("$Y");
                   ...
                 }
-              }    
+              }
           - metavariable-regex:
               metavariable: $Y
-              regex: ^(?!https?).*:\/\/.+$                                     
+              regex: ^(?!https?).*:\/\/.+$
       - patterns:
           - pattern: |
               WebView $WV = new WebView(...);
@@ -71,7 +71,7 @@ rules:
                 ...
                 $FUNC(...) {
                   ...
-                  getSettings().setAllowFileAccess(false);  
+                  getSettings().setAllowFileAccess(false);
                   ...
                 }
               }
@@ -85,10 +85,10 @@ rules:
                 ...
                 $FUNC(...) {
                   ...
-                  this.getSettings().setAllowFileAccess(false);  
+                  this.getSettings().setAllowFileAccess(false);
                   ...
                 }
-              }                                
+              }
       - patterns:
           - pattern: |
               WebView $WV = new WebView(...);
@@ -108,10 +108,10 @@ rules:
                 ...
                 $FUNC(...) {
                   ...
-                  getSettings().setAllowFileAccessFromFileURLs(false);  
+                  getSettings().setAllowFileAccessFromFileURLs(false);
                   ...
                 }
-              }   
+              }
       - patterns:
           - pattern: |
               class $WV extends WebView {
@@ -122,10 +122,10 @@ rules:
                 ...
                 $FUNC(...) {
                   ...
-                  this.getSettings().setAllowFileAccessFromFileURLs(false);  
+                  this.getSettings().setAllowFileAccessFromFileURLs(false);
                   ...
                 }
-              }                            
+              }
       - patterns:
           - pattern: |
               WebView $WV = new WebView(...);
@@ -145,10 +145,10 @@ rules:
                 ...
                 $FUNC(...) {
                   ...
-                  getSettings().setAllowUniversalAccessFromFileURLs(false);  
+                  getSettings().setAllowUniversalAccessFromFileURLs(false);
                   ...
                 }
-              } 
+              }
       - patterns:
           - pattern: |
               class $WV extends WebView {
@@ -159,10 +159,10 @@ rules:
                 ...
                 $FUNC(...) {
                   ...
-                  this.getSettings().setAllowUniversalAccessFromFileURLs(false);  
+                  this.getSettings().setAllowUniversalAccessFromFileURLs(false);
                   ...
                 }
-              }                           
+              }
       - patterns:
           - pattern: |
               WebView $WV = new WebView(...);
@@ -182,7 +182,7 @@ rules:
                 ...
                 $FUNC(...) {
                   ...
-                  getSettings().setAllowContentAccess(false);  
+                  getSettings().setAllowContentAccess(false);
                   ...
                 }
               }
@@ -196,7 +196,7 @@ rules:
                 ...
                 $FUNC(...) {
                   ...
-                  this.getSettings().setAllowContentAccess(false);  
+                  this.getSettings().setAllowContentAccess(false);
                   ...
                 }
-              }              
+              }

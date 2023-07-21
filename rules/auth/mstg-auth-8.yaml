@@ -4,8 +4,8 @@ rules:
     languages:
       - java
     metadata:
-      company: IMQ Minded Security
-      author: Maurizio Siddu
+      authors:
+        - Maurizio Siddu @akabe1 (IMQ Minded Security)
       owasp-mobile: M1
       category: security
       area: authentication

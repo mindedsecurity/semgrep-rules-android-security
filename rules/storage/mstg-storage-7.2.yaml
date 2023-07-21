@@ -4,8 +4,9 @@ rules:
     languages:
       - xml    
     metadata:
-      company: IMQ Minded Security
-      author: Riccardo Granata, Andrea Agnello
+      authors:
+        - Riccardo Granata (IMQ Minded Security)
+        - Andrea Agnello (IMQ Minded Security)
       owasp-mobile: M2
       category: security
       area: storage
