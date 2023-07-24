@@ -6,6 +6,7 @@ rules:
     metadata:
       authors:
         - Riccardo Cardelli @gand3lf (IMQ Minded Security)
+        - Federico Dotta @apps3c (HN Security)
       owasp-mobile: M1
       category: security
       area: platform
@@ -14,5 +15,14 @@ rules:
         - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#determining-whether-java-objects-are-exposed-through-webviews-mstg-platform-7
-    message: The class "$X" is accessible from the WebView "$WV".
-    pattern: $WV.addJavascriptInterface(($X $CLASS),$Y)
+    message: The application exposes the Java class "$CLASS" through the WebView "$WV".
+    pattern-either:
+      - patterns:
+          - pattern: $WV.addJavascriptInterface(($CLASS $X),$Y)
+          - pattern-not: this.addJavascriptInterface(($CLASS $X),$Y)
+      - patterns:
+          - pattern-inside: class $WV{ ... }
+          - pattern: addJavascriptInterface(($CLASS $X),$Y)
+      - patterns:
+          - pattern-inside: class $WV{ ... }
+          - pattern: this.addJavascriptInterface(($CLASS $X),$Y)
