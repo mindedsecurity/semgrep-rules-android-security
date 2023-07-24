@@ -4,8 +4,8 @@ rules:
     languages:
       - java
     metadata:
-      company: IMQ Minded Security
-      author: Giacomo Zorzin (gellge)
+      authors:
+        - Giacomo Zorzin @gellge (IMQ Minded Security)
       owasp-mobile-top: M3
       category: security
       area: network

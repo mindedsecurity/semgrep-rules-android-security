@@ -4,8 +4,8 @@ rules:
     languages:
       - java
     metadata:
-      company: IMQ Minded Security
-      author: Christian Cotignola (b4dsheep)
+      authors:
+        - Christian Cotignola @b4dsheep (IMQ Minded Security)
       owasp-mobile: M1
       category: security
       area: platform
@@ -15,6 +15,6 @@ rules:
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-javascript-execution-in-webviews-mstg-platform-5
     message: The application allows for JavaScript execution within a WebView instance.
-    pattern-either:  
+    pattern-either:
       - pattern: $OBJ.setJavaScriptEnabled(true)
       - pattern: setJavaScriptEnabled(true)

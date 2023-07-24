@@ -4,8 +4,8 @@ rules:
     languages:
       - xml
     metadata:
-      company: IMQ Minded Security
-      author: Michele Di Bonaventura (cyberaz0r)
+      authors:
+        - Michele Di @cyberaz0r (IMQ Minded Security)
       owasp-mobile: M1
       category: security
       area: storage

@@ -1,15 +1,15 @@
 rules:
   - id: MSTG-ARCH-9
     severity: WARNING
-    languages: 
+    languages:
       - java
     metadata:
-      company: IMQ Minded Security
-      author: Riccardo Cardelli (gand3lf)
+      authors:
+        - Riccardo Cardelli @gand3lf (IMQ Minded Security)
       owasp-mobile: M7
       category: security
       area: arch
-      verification-level: 
+      verification-level:
         - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-enforced-updating-mstg-arch-9
