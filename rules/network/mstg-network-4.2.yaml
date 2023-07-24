@@ -12,7 +12,7 @@ rules:
       verification-level:
         - L2
       references:
-        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-for-debugging-code-and-verbose-error-logging-mstg-code-4
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05g-Testing-Network-Communication.md#testing-custom-certificate-stores-and-certificate-pinning-mstg-network-4
     message: The application may not implement correctly the SSL Pinning.
     options:
       symbolic_propagation: true
