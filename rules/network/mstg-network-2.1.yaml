@@ -6,7 +6,7 @@ rules:
     metadata:
       authors:
         - Giacomo Zorzin @gellge (IMQ Minded Security)
-      owasp-mobile-top: M3
+      owasp-mobile: M3
       category: security
       area: network
       verification-level:

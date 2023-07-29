@@ -8,7 +8,7 @@ rules:
         - Riccardo Cardelli @gand3lf (IMQ Minded Security)
       owasp-mobile: M2
       category: security
-      area: crypto
+      area: cryptography
       verification-level:
         - L1
         - L2
