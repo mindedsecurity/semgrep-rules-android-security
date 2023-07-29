@@ -65,5 +65,5 @@ The project was started in March 2023 by the [**IMQ Minded Security**](https://m
 The contribution to this project is totally open with the recommendation to be careful in submitting rules that respect the proposed format.
 - Supervisor: Stefano Di Paola (@WisecWisec)
 - Project leader: Riccardo Cardelli (@gand3lf)
-- Contributors: Andrea Agnello, Christian Cotignola (@b4dsheep), Giacomo Zorzin (@gellge), Giovanni Fazi (@giovifazi), Martino Lessio (@mlessio), Maurizio Siddu (@akabe1), Michele Di Bonaventura (@cyberaz0r), Michele Tumolo (@zer0s0urce), Riccardo Granata
+- Contributors: Andrea Agnello, Christian Cotignola (@b4dsheep), Federico Dotta (@apps3c), Giacomo Zorzin (@gellge), Giovanni Fazi (@giovifazi), Martino Lessio (@mlessio), Maurizio Siddu (@akabe1), Michele Di Bonaventura (@cyberaz0r), Michele Tumolo (@zer0s0urce), Riccardo Granata
 
