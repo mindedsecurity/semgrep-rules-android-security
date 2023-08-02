@@ -31,5 +31,7 @@ rules:
               $X.connect();
           - pattern-not: |
               HttpsURLConnection $X = ...;
+              ...
               urlConnection.setSSLSocketFactory(...);
+              ...
               $X.connect();
