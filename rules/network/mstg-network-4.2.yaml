@@ -25,13 +25,8 @@ rules:
               metavariable: $P
               regex: .*(?i)(sha1/).*
       - patterns:
-          - pattern: |
-              HttpsURLConnection $X = ...;
+          - pattern: (HttpsURLConnection $X).connect();
+          - pattern-not-inside: |
+              (HttpsURLConnection $X).setSSLSocketFactory(...);
               ...
-              $X.connect();
-          - pattern-not: |
-              HttpsURLConnection $X = ...;
-              ...
-              $X.setSSLSocketFactory(...);
-              ...
-              $X.connect();
+              (HttpsURLConnection $X).connect();
