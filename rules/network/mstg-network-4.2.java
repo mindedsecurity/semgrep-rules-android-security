@@ -33,4 +33,29 @@ public class Test{
         //urlConnection.setSSLSocketFactory(sslContext.getSocketFactory());
         urlConnection.connect();
     }
+    public void test5(){
+        TrustManager[] trustManagers = new TrustManager[1];
+        trustManagers[0] = new PinningTrustManager(SystemKeyStore.getInstance(context), pins, 0);
+
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+        sslContext.init(null, trustManagers, null);
+
+        HttpsURLConnection urlConnection = (HttpsURLConnection)url.openConnection();
+        test3();
+        urlConnection.setSSLSocketFactory(sslContext.getSocketFactory());
+        urlConnection.connect();
+    }
+    public void test6(){
+        TrustManager[] trustManagers = new TrustManager[1];
+        trustManagers[0] = new PinningTrustManager(SystemKeyStore.getInstance(context), pins, 0);
+
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+        sslContext.init(null, trustManagers, null);
+
+        HttpsURLConnection urlConnection;
+        urlConnection = (HttpsURLConnection)url.openConnection();
+        test3();
+        //urlConnection.setSSLSocketFactory(sslContext.getSocketFactory());
+        urlConnection.connect();
+    }    
 }
