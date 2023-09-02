@@ -15,7 +15,7 @@ Semgrep stands out as a powerful static analysis tool utilized for identifying s
 Thanks to these features, Semgrep is highly suitable for Static Application Security Testing (SAST) activities.  
 
 ### Installation & Usage :wrench:  
-First, install Semgrep CLI with one of the following commands([installation guide](https://semgrep.dev/docs/getting-started/)):
+First, install Semgrep CLI with the following command ([installation guide](https://semgrep.dev/docs/getting-started/)):
 ```bash
 # For Ubuntu/WSL/Linux/macOS
 $ python3 -m pip install semgrep
