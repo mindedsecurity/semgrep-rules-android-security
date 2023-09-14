@@ -6,7 +6,7 @@ public class MainActivity extends AppCompatActivity {
 		if (g_IOException != null)
 			throw g_IOException;
 		SSLSocket s = (SSLSocket)g_factory.createSocket(address, port, localAddress, localPort);
-        // this should be matched
+        // ruleid: MSTG-NETWORK-2.2
 		s.setEnabledCipherSuites(weakCiphers);
 		return s;
     }
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 		if (g_IOException != null)
 			throw g_IOException;
 		SSLSocket s = (SSLSocket)g_factory.createSocket(address, port, localAddress, localPort);
-        // this should be matched
+        // ruleid: MSTG-NETWORK-2.2
 		s.setEnabledCipherSuites(a);
 		return s;
     }
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 		if (g_IOException != null)
 			throw g_IOException;
 		SSLSocket s = (SSLSocket)g_factory.createSocket(address, port, localAddress, localPort);
-        // this should be matched
+        // ruleid: MSTG-NETWORK-2.2
 		s.setEnabledCipherSuites(weakCiphers.toArray());
 		return s;
     }
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 		if (g_IOException != null)
 			throw g_IOException;
 		SSLSocket s = (SSLSocket)g_factory.createSocket(address, port, localAddress, localPort);
-        // this should be matched
+        // ruleid: MSTG-NETWORK-2.2
 		s.setEnabledCipherSuites(mixCiphers.toArray());
 		return s;
     }
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 		if (g_IOException != null)
 			throw g_IOException;
 		SSLSocket s = (SSLSocket)g_factory.createSocket(address, port, localAddress, localPort);
-        // this should not be matched
+        // ok: MSTG-NETWORK-2.2
 		s.setEnabledCipherSuites(b);
 		return s;
     }
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 		if (g_IOException != null)
 			throw g_IOException;
 		SSLSocket s = (SSLSocket)g_factory.createSocket(address, port, localAddress, localPort);
-        // this should not be matched
+        // ok: MSTG-NETWORK-2.2
 		s.setEnabledCipherSuites(strongCiphers);
 		return s;
     }

@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
+    <!-- ok: MSTG-STORAGE-8 -->
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
@@ -29,7 +30,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-
+    <!-- ruleid: MSTG-STORAGE-8 -->
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"

@@ -18,17 +18,17 @@ rules:
       - pattern-either:
           - patterns:
               - pattern-inside: |
-                  $RET  onAuthenticationSucceeded(FingerprintManager.AuthenticationResult $RES) {
+                  $RET onAuthenticationSucceeded(FingerprintManager.AuthenticationResult $RES) {
                     ...
                   }
           - patterns:
               - pattern-inside: |
-                  $RET  onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult $RES) {
+                  $RET onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult $RES) {
                     ...
                   }
           - patterns:
               - pattern-inside: |
-                  $RET  onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult $RES) {
+                  $RET onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult $RES) {
                     ...
                   }
       - pattern-not-inside: |

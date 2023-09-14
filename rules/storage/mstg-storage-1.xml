@@ -6,6 +6,7 @@
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
     <string name="myhash">2ab0cc5d40ce5d4d1bfe9f4c46987199</string>
+    <!-- ruleid: MSTG-STORAGE-1 -->
     <string name="password">D15c0v3r1n6Th3W0r1d</string>
 </resources>
 
@@ -21,6 +22,7 @@
         <item>SC-01M</item>
         <item>SCV45</item>
     </array>
+    <!-- ruleid: MSTG-STORAGE-1 -->
     <array name="crypto_key">
         <item>t3stm332ngb54o3u342</item>
     </array>

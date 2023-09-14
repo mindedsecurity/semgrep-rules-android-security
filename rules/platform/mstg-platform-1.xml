@@ -9,12 +9,14 @@
       <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
+    <!-- ruleid: MSTG-PLATFORM-1 -->
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <!-- ruleid: MSTG-PLATFORM-1 -->
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <!-- ruleid: MSTG-PLATFORM-1 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
- 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"

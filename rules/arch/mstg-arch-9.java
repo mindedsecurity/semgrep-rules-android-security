@@ -1,3 +1,4 @@
+// ruleid: MSTG-ARCH-9
 public class SplashScreen extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {

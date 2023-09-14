@@ -10,7 +10,7 @@ public class InnerClassReferenceLeakActivity extends AppCompatActivity {
          leakyClass = new LeakyClass(this);
          leakyClass.redirectToSecondScreen();
     }
-    
+    // ruleid: MSTG-CODE-8.3
     private class LeakyClass {
         
         private Activity activity;
@@ -25,6 +25,7 @@ public class InnerClassReferenceLeakActivity extends AppCompatActivity {
 }
 
 public class T{
+    // ruleid: MSTG-CODE-8.3
     public class C{
         private void set(Activity a){
             int b = 3;

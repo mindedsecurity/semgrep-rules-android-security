@@ -1,6 +1,7 @@
 import java.io.BufferedWriter;
 import java.util.logging.Logger;
 
+// ok: MSTG-PLATFORM-9.1
 public class MainActivity extends AppCompatActivity {
    @Override
    public void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
    }
 }
 
-
+// ruleid: MSTG-PLATFORM-9.1
 public class Activity extends AppCompatActivity {
    @Override
    public void onCreate(Bundle savedInstanceState) {
@@ -43,4 +44,3 @@ public class Activity extends AppCompatActivity {
       return super.onFilterTouchEventForSecurity(event);
    }
 }
-

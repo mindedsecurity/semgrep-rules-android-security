@@ -2,7 +2,6 @@ import androidx.biometric.BiometricPrompt;
 import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintManagerCompat;
 
-
 public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -16,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         // Vulnerable BiometricPrompt
         //[...]
         biometricPrompt = new BiometricPrompt(MainActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            // ruleid: MSTG-AUTH-8
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 //Does not use the CryptoObject from result
@@ -38,11 +38,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-    private void test_vulnFingerprintManager() {
-        // Vulnerable FingerprintManager
-        //[...]
+    // Vulnerable FingerprintManager
+    //[...]
         public void Authentication(FingerprintManager manager, FingerprintManager.CryptoObject cryptoObject) {
             CancellationSignal cancellationSignal = new CancellationSignal();
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
@@ -55,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         public void onAuthenticationFailed() {
             this.update("Authentication Failed!!!", false);
         }
-  
+        // ruleid: MSTG-AUTH-8
         @Override
         public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
             //Does not use the CryptoObject from result
@@ -69,10 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 textView.setTextColor(ContextCompat.getColor(context,R.color.black));
             }
         }
-    }
-
-
-
+    //[...]
+    
     private void test_vulnFingerprintManagerCompat() {
         // Vulnerable FingerprintManagerCompat
         //[...]
@@ -95,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 showFingerprintError(LocaleController.getString("FingerprintNotRecognized",
                         R.string.FingerprintNotRecognized));
             }
-
+            // ruleid: MSTG-AUTH-8
             @Override
             public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
                 try {
@@ -112,13 +107,11 @@ public class MainActivity extends AppCompatActivity {
         }, null);
     }
 
-
-
-
     private void test_goodBiometricPrompt() {
         // Good BiometricPrompt
         //[...]
         biometricPrompt = new BiometricPrompt(MainActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            // ok: MSTG-AUTH-8
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 //Uses the CryptoObject from result
@@ -150,7 +143,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 }

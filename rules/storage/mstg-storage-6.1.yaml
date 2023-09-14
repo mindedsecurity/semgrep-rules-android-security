@@ -1,5 +1,5 @@
 rules:
-  - id: MSTG-STORAGE-6
+  - id: MSTG-STORAGE-6.1
     severity: WARNING
     languages:
       - xml
