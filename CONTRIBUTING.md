@@ -28,4 +28,3 @@ For example:
 <div align=center>
 :beers: <b>Thank you!</b> :beers:
 </div>
-
