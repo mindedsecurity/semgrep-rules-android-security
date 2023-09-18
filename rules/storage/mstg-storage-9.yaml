@@ -16,7 +16,27 @@ rules:
     message: The application does not remove sensitive data from views when moved to the background.
     patterns:
       - pattern-either:
-        - pattern: getWindow().setFlags($P1, $P2)
-        - pattern: (Window $W).setFlags($P1, $P2)
-      - metavariable-comparison:
-          comparison: $P1 & 8192 == 0
+        - patterns:
+          - pattern-either:
+            - pattern: getWindow().setFlags($P1, $P2)
+            - pattern: (...).getWindow().setFlags($P1, $P2)
+            - pattern: (Window $W).setFlags($P1, $P2)
+          - metavariable-comparison:
+              comparison: $P1 & 8192 == 0
+        - patterns:
+          - pattern: public class $CLASS extends $ACT{ ... }
+          - pattern-not: |
+              public class $CLASS{...
+                $M(...){...
+                  getWindow().addFlags(8192);
+                ...}
+              ...}
+          - pattern-not: |
+              public class $CLASS{...
+                $M(...){...
+                  (...).setFlags(...);
+                ...}
+              ...}
+          - metavariable-regex:
+              metavariable: $ACT
+              regex: .*Activity.*
