@@ -21,6 +21,10 @@ rules:
             - pattern: getWindow().setFlags($P1, $P2)
             - pattern: (...).getWindow().setFlags($P1, $P2)
             - pattern: (Window $W).setFlags($P1, $P2)
+            - pattern: getWindow().addFlags($P1)
+            - pattern: (...).getWindow().addFlags($P1)
+            - pattern: (Window $W).addFlags($P1)
+
           - metavariable-comparison:
               comparison: $P1 & 8192 == 0
         - patterns:
@@ -28,7 +32,7 @@ rules:
           - pattern-not: |
               public class $CLASS{...
                 $M(...){...
-                  getWindow().addFlags(8192);
+                  (...).addFlags(...);
                 ...}
               ...}
           - pattern-not: |

@@ -18,6 +18,7 @@ public class MainActivity2 extends AppCompatActivity {
 // ok: MSTG-STORAGE-9
 public class MainActivity3 extends AppCompatActivity {
      private void test(){
-          getWindow().addFlags(8192);
+          // ruleid: MSTG-STORAGE-9
+          getWindow().addFlags(222);
      }
 }
