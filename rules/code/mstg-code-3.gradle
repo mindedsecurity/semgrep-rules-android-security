@@ -34,6 +34,7 @@ android {
 
     externalNativeBuild {
         cmake {
+            // ruleid: MSTG-CODE-3
             cppFlags "-fvisibility=hidden"
         }
     }

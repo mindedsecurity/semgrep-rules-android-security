@@ -8,6 +8,7 @@ public class TestCryptoAndroid {
         // Vulnerable 
         //[...]
         KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+        // ruleid: MSTG-CRYPTO-4
         keyGenerator.initialize(new KeyGenParameterSpec.Builder("key2", KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                  .setBlockModes(KeyProperties.BLOCK_MODE_ECB)
                  .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
@@ -19,6 +20,7 @@ public class TestCryptoAndroid {
         // Vulnerable 
         //[...]
         KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+        // ruleid: MSTG-CRYPTO-4
         keyGenerator.initialize(new KeyGenParameterSpec.Builder("key2", KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                  .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
                  .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
@@ -48,6 +50,7 @@ public class TestCryptoAndroid {
         // Vulnerable 
         //[...]
         final KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES,ANDROID_KEY_STORE);
+        // ruleid: MSTG-CRYPTO-4
         final KeyGenParameterSpec keyGenParameterSpec = new KeyGenParameterSpec.Builder(
                         keyName,
                         KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
@@ -64,6 +67,7 @@ public class TestCryptoAndroid {
         // Vulnerable 
         //[...]
         final KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES,ANDROID_KEY_STORE);
+        // ruleid: MSTG-CRYPTO-4
         final KeyGenParameterSpec keyGenParameterSpec = new KeyGenParameterSpec.Builder(
                         keyName,
                         KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
@@ -78,6 +82,7 @@ public class TestCryptoAndroid {
     public String vuln_encrypt(String toEncrypt) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         // Vulnerable 
         //[...]
+        // ruleid: MSTG-CRYPTO-4
         final Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
         //[...]
@@ -99,6 +104,7 @@ public class TestCryptoAndroid {
 	// Vulnerable 
         //[...]
         DESKeySpec dks = new DESKeySpec(key.getBytes());
+        // ruleid: MSTG-CRYPTO-4
         SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
         Key secretKey = keyFactory.generateSecret(dks);
 	//[...]

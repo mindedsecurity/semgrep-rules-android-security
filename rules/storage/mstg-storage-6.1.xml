@@ -20,19 +20,20 @@
                  android:usesCleartextTraffic="true"
                  android:defaultToDeviceProtectedStorage="true"
                  android:directBootAware="true">
+        <!-- ruleid: MSTG-STORAGE-6.1 -->
         <provider android:name="TelephonyProvider"
                   android:authorities="telephony"
                   android:exported="true"
                   android:singleUser="true"
                   android:multiprocess="false" />
-
+        <!-- ruleid: MSTG-STORAGE-6.1 -->
         <provider android:name="SmsProvider"
                   android:authorities="sms"
                   android:multiprocess="false"
                   android:exported="true"
                   android:singleUser="true"
                   android:readPermission="android.permission.READ_SMS" />
- 
+        <!-- ruleid: MSTG-STORAGE-6.1 -->
         <provider android:name="MmsProvider"
                   android:authorities="mms"
                   android:multiprocess="false"
@@ -42,7 +43,7 @@
             <grant-uri-permission android:pathPrefix="/part/" />
             <grant-uri-permission android:pathPrefix="/drm/" />
         </provider>
-
+        <!-- ok: MSTG-STORAGE-6.1 -->
         <provider android:name="MmsSmsProvider"
                   android:authorities="mms-sms"
                   android:multiprocess="false"
@@ -50,6 +51,7 @@
                   android:singleUser="true"
                   android:permission="signature"
                   android:readPermission="android.permission.READ_SMS" />
+        <!-- ruleid: MSTG-STORAGE-6.1 -->
         <provider
                     android:authorities="com.mwr.example.sieve.DBContentProvider"
                     android:exported="true"
@@ -61,6 +63,7 @@
                         android:writePermission="com.mwr.example.sieve.WRITE_KEYS"
                     />
         </provider>
+        <!-- ok: MSTG-STORAGE-6.1 -->
         <provider
             android:authorities="com.mwr.example.sieve.FileBackupProvider"
             android:exported="false"

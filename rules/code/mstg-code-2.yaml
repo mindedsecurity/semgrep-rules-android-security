@@ -2,7 +2,7 @@ rules:
   - id: MSTG-CODE-2
     severity: WARNING
     languages:
-      - generic
+      - xml
     metadata:
       authors:
         - Martino Lessio @mlessio (IMQ Minded Security)
@@ -18,5 +18,5 @@ rules:
       include:
         - "**/AndroidManifest.xml"
     patterns:
-      - pattern-inside: <application ... />
+      - pattern-inside: <application ... > ... </application>
       - pattern: android:debuggable="true"

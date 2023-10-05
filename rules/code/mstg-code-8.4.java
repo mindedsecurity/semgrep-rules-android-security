@@ -3,9 +3,9 @@ public class MainActivity extends Activity {
    public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       Context context = getApplicationContext();
-      // KO
+      // ruleid: MSTG-CODE-8.4
       Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-      // OK
+      // ok: MSTG-CODE-8.4
       Toast.makeText(context, message, Toast.LENGTH_LONG).show();
    }
 }

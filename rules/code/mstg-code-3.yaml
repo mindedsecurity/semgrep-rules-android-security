@@ -18,5 +18,5 @@ rules:
       include:
         - "**/build.gradle"
     patterns:
-      - pattern-regex: externalNativeBuild(.|\n)*
-      - pattern-not-regex: \-fvisibility=hidden(.|\n)*
+      - pattern-inside: externalNativeBuild{ ... }
+      - pattern: -fvisibility=hidden

@@ -1,6 +1,10 @@
 public class StaticReferenceLeakActivity extends AppCompatActivity {
+    // ruleid: MSTG-CODE-8.2
     private static TextView textView;
+    // ruleid: MSTG-CODE-8.2
     private static Activity activity;
+    // ok: MSTG-CODE-8.2
+    private static String a;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

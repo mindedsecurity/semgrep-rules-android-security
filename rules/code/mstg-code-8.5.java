@@ -18,7 +18,7 @@ public class ThreadReferenceLeakActivity extends AppCompatActivity {
     private void redirectToNewScreen() {
         startActivity(new Intent(this, SecondActivity.class));
     }
-
+    // ruleid: MSTG-CODE-8.5
     private class LeakyThread extends Thread {
         @Override
         public void run() {

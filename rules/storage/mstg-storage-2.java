@@ -4,11 +4,13 @@ public class MainActivity extends AppCompatActivity {
         test();
     }
     private void test(){
+        // ruleid: MSTG-STORAGE-2
       SharedPreferences sp = getContext().getSharedPreferences(OLD_PREFS_NAME, 2);
       int a = 3;
       String s = sp.getString("pwd", "not found");
     }
     public void test2(){
+        // ruleid: MSTG-STORAGE-2
         FileOutputStream fos = openFileOutput(FILENAME, 2);
         fos.write(string.getBytes());
         fos.close();
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
     }
     public void test6(){
+        // ruleid: MSTG-STORAGE-2
         File outFile = new File(ctx.getExternalFilesDir(null), filename);
         
     }
@@ -62,11 +65,12 @@ public class MainActivity extends AppCompatActivity {
             WaitlistContract.WaitlistEntry.TABLE_NAME,
             null,
             testValues);
+        // ruleid: MSTG-STORAGE-2
         Cursor c = database.rawQuery("tab_secret", tableColumns, whereClause, whereArgs, null, null, orderBy);
     }
     public void test8(){
+        // ruleid: MSTG-STORAGE-2
         SharedPreferences sharedPref = context.getSharedPreferences(
         getString(R.string.preference_file_key), 1);
     }
 }
-

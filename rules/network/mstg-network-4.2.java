@@ -4,15 +4,17 @@ public class Test{
 
     public void test1(){
         sslContext = SSLContext.getInstance("TLSv1.2");
+        // ruleid: MSTG-NETWORK-4.2
         sslContext.init(null, null, null);
     }
     public void test2(){
         TrustManagerFactory instance = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        // ruleid: MSTG-NETWORK-4.2
         instance.init((KeyStore) null);
     }
     public void test3(){
-        OkHttpClient client = new OkHttpClient.Builder()
-        .certificatePinner(new CertificatePinner.Builder()
+        // ruleid: MSTG-NETWORK-4.2
+        OkHttpClient client = new OkHttpClient.Builder().certificatePinner(new CertificatePinner.Builder()
             .add("example.com", "sha1/UwQAapahrjCOjYI3oLUx5AQxPBR02Jz6/E2pt0IeLXA=")
             .build())
         .build();
@@ -30,7 +32,7 @@ public class Test{
         sslContext.init(null, trustManagers, null);
 
         HttpsURLConnection urlConnection = (HttpsURLConnection)url.openConnection();
-        //urlConnection.setSSLSocketFactory(sslContext.getSocketFactory());
+        // ruleid: MSTG-NETWORK-4.2
         urlConnection.connect();
     }
     public void test5(){
@@ -43,6 +45,7 @@ public class Test{
         HttpsURLConnection urlConnection = (HttpsURLConnection)url.openConnection();
         test3();
         urlConnection.setSSLSocketFactory(sslContext.getSocketFactory());
+        // ok: MSTG-NETWORK-4.2
         urlConnection.connect();
     }
     public void test6(){
@@ -55,7 +58,7 @@ public class Test{
         HttpsURLConnection urlConnection;
         urlConnection = (HttpsURLConnection)url.openConnection();
         test3();
-        //urlConnection.setSSLSocketFactory(sslContext.getSocketFactory());
+        // ruleid: MSTG-NETWORK-4.2
         urlConnection.connect();
     }    
 }
