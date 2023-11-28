@@ -1,5 +1,5 @@
 rules:
-  - id: MSTG-NETWORK-1
+  - id: MSTG-NETWORK-1.2
     severity: WARNING
     languages:
       - java
