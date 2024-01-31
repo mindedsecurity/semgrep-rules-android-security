@@ -1,8 +1,7 @@
 # Semgrep Rules for Android Application Security
 
 [![Owasp-MASTG](https://img.shields.io/badge/OWASP_MASTG-v1.5.0-blue)](https://github.com/OWASP/owasp-mastg/tree/v1.5.0)
-[![Semgrep](https://img.shields.io/badge/Semgrep-v1.27.0-green)](https://semgrep.dev/)
-[![License](https://img.shields.io/badge/License-GPL3.0-orange)](https://www.gnu.org/licenses/gpl-3.0.html)
+[![Semgrep](https://img.shields.io/badge/Semgrep-v1.55.0-orange)](https://semgrep.dev/)
 
 This project is a compilation of [Semgrep](https://semgrep.dev/) rules derived from the OWASP Mobile Application Security Testing Guide ([MASTG](https://mas.owasp.org/MASTG/)) specifically for Android applications.  
 The aim is to enhance and support Mobile Application Penetration Testing (MAPT) activities conducted by the ethical hacker community.
@@ -40,7 +39,7 @@ Performance tips:
 
 >_2. Make sure to launch the scan from the project folder in order to use the provided ".semgrepignore" file. This prevents scanning well-known libraries that could generate a high number of false positives._
 
-### Project Status
+### Project Status :checkered_flag:
 The rules are aligned with the version [1.5.0](https://github.com/OWASP/owasp-mastg/tree/v1.5.0) of the OWASP MASTG. While complete coverage of all tests cannot be guaranteed, the authors have made significant efforts to provide a comprehensive overview of the status of each implemented rule.  
 The presence of False Positives (FP) is expected but limited and efforts have been done to reduce the potential occurrence of False Negatives (FN).
 
@@ -65,5 +64,9 @@ The project was started in March 2023 by the [**IMQ Minded Security**](https://m
 The contribution to this project is totally open with the recommendation to be careful in submitting rules that respect the proposed format.
 - Supervisor: Stefano Di Paola ([@WisecWisec](https://twitter.com/WisecWisec))
 - Project leader: Riccardo Cardelli ([@gand3lf](https://github.com/gand3lf))
-- Contributors: Andrea Agnello, Christian Cotignola (@b4dsheep), Federico Dotta (@apps3c), Giacomo Zorzin (@gellge), Giovanni Fazi (@giovifazi), Martino Lessio (@mlessio), Maurizio Siddu (@akabe1), Michele Di Bonaventura (@cyberaz0r), Michele Tumolo (@zer0s0urce), Riccardo Granata
+- Contributors: Andrea Agnello (@AndreNoli), Christian Cotignola (@b4dsheep), Federico Dotta (@apps3c), Giacomo Zorzin (@gellge), Giovanni Fazi (@giovifazi), Martino Lessio (@mlessio), Maurizio Siddu (@akabe1), Michele Di Bonaventura (@cyberaz0r), Michele Tumolo (@zer0s0urce), Riccardo Granata (@riccardogranata)
 
+### Talks & More :microphone:
+- 23 Oct 2023: IMQ Minded Security Blog ([Project's Official Article](https://blog.mindedsecurity.com/2023/10/semgrep-rules-for-android-application.html))  
+- 11 Sep 2023: OWASP Italy Day ([Slides](https://github.com/OWASP/www-chapter-italy/blob/96201991fdfef280a67d3b41b85e7715d53115d8/assets/images/Riccardo%20Cardelli%20-%20OWASP%20Italy%20Day%202023%20-%2011th%20Sept%20PoliMi.pdf))
+- 03 Ago 2023: DevSecCon - Introduzione a SAST e Mobile Security Testing ([YouTube Live](https://youtu.be/ZsZMzGD9-6E))  
