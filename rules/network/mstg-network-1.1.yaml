@@ -1,0 +1,29 @@
+rules:
+  - id: MSTG-NETWORK-1.1
+    severity: WARNING
+    languages: 
+      - xml
+    metadata:
+      authors:
+        - Andrea Agnello (IMQ Minded Security)
+        - Riccardo Granata (IMQ Minded Security)
+      owasp-mobile: M1
+      category: security
+      area: storage
+      verification-level: 
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05g-Testing-Network-Communication.md#testing-data-encryption-on-the-network-mstg-network-1
+    message: The application transmits information over insecure channels through the use of HttpURLConnection. It is recommended to verify if the Network Security Configuration is appropriately configured to prevent such insecure transmissions.
+    paths:
+      include:
+        - "**/AndroidManifest.xml"
+    pattern-either:
+        - patterns:
+            - pattern: <uses-sdk ... android:targetSdkVersion="$VE" .../>
+            - metavariable-comparison:
+                comparison: int($VE) < 28
+                metavariable: $VE
+        - patterns:
+            - pattern: <application ... android:usesCleartextTraffic="true" ... />

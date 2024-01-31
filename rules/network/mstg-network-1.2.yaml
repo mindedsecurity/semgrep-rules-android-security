@@ -1,0 +1,49 @@
+rules:
+  - id: MSTG-NETWORK-1.2
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      authors: 
+        - Riccardo Granata (IMQ Minded Security) 
+        - Andrea Agnello (IMQ Minded Security)
+      owasp-mobile: M1
+      category: security
+      area: storage
+      verification-level:
+        - L1 
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05g-Testing-Network-Communication.md#testing-data-encryption-on-the-network-mstg-network-1
+    message: The application could send information over insecure channels or not use the getDefaultHostnameVerifier method for SSLSocket
+    paths:
+      exclude:
+        - "**/okhttp3/**"
+        - "**/volley/**"
+        - "**/okio/**"
+        - "**/retrofit2/**"
+        - "**/Ion/**"
+        - "**/asynchttpclient/**"
+        - "**/fuel/**"
+        - "**/android-async-http/**"
+    pattern-either:
+        - patterns:
+          - pattern-inside: | 
+              $METHOD(...){...}
+          - pattern: Socket $SOCKET = new Socket(...);
+        - patterns:
+          - pattern-inside: |
+              $METHOD(...){...}
+          - pattern: $CONNECTION = (HttpURLConnection) $URI.openConnection();
+        - patterns:     
+            - pattern-either:     
+                - patterns:
+                    - pattern-inside: |
+                        import java.net.Socket;
+                        ...
+                    - pattern-not-regex: .*\.getDefaultHostnameVerifier().* 
+                - patterns:    
+                    - pattern-inside: |
+                        import javax.net.ssl.SSLSocket;
+                        ...
+                    - pattern-not-regex: .*\.getDefaultHostnameVerifier().*         
