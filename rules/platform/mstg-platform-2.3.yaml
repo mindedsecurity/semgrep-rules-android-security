@@ -1,0 +1,73 @@
+rules:
+  - id: MSTG-PLATFORM-2.3
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      authors:
+        - Riccardo Cardelli @gand3lf (IMQ Minded Security)
+      owasp-mobile: M7
+      category: security
+      area: platform
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-for-injection-flaws-mstg-platform-2
+    message: Identified a potential SQL Injection vulnerability during intent handling.
+    options:
+      symbolic_propagation: true
+    mode: taint
+    pattern-sources:
+      - patterns:
+        - pattern-either:
+            - pattern: getIntent().$GETMETHOD(...)
+            - pattern: ... .getIntent().$GETMETHOD(...)
+        - metavariable-regex:
+            metavariable: $GETMETHOD
+            regex: get.*
+      - patterns:
+        - pattern-inside: class $CLASS extends BroadcastReceiver { ... }
+        - pattern-inside: $M(..., Intent $I, ...) { ... }
+        - patterns:
+          - pattern: $I.$GETMETHOD(...)
+          - metavariable-regex:
+              metavariable: $GETMETHOD
+              regex: get.*
+      - patterns:
+        - pattern-inside: void onNewIntent(Intent $I){ ... }
+        - patterns:
+          - pattern: $I.$GETMETHOD(...)
+          - metavariable-regex:
+              metavariable: $GETMETHOD
+              regex: get.*
+      - patterns:
+        - pattern-inside: int onStartCommand(Intent $I, ...){ ... }
+        - patterns:
+          - pattern: $I.$GETMETHOD(...)
+          - metavariable-regex:
+              metavariable: $GETMETHOD
+              regex: get.*
+      - patterns:
+        - pattern-inside: void onReceive(..., Intent $I){ ... }
+        - patterns:
+          - pattern: $I.$GETMETHOD(...)
+          - metavariable-regex:
+              metavariable: $GETMETHOD
+              regex: get.*      
+
+    pattern-sinks:
+      - pattern: $DB.delete(...)
+      - pattern: $DB.update(...)
+      - pattern: $DB.updateWithOnConflict(...)
+      - pattern: $DB.execSQL(...)
+      - pattern: $DB.rawQuery(...)
+      - pattern: $DB.query(...)
+      - pattern: $DB.queryWithFactory(...)
+      - pattern: $DB.rawQueryWithFactory(...)
+      - patterns:
+          - pattern: <... "$X" ...>
+          - metavariable-regex:
+              metavariable: $X
+              regex: .*(?i)((WHERE )|(AND )|(OR )|(SELECT )|(INSERT INTO )|(CREATE TABLE
+                )|(DROP TABLE )|(ALTER TABLE )|(IN\s?\()|(LIKE )).*
