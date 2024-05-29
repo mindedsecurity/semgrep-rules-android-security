@@ -1,0 +1,27 @@
+rules:
+  - id: MSTG-PLATFORM-2.5
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      authors:
+        - Riccardo Cardelli @gand3lf (IMQ Minded Security)
+      owasp-mobile: M7
+      category: security
+      area: platform
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-for-fragment-injection-mstg-platform-2
+    message: Potential Fragment Injection found, check that the "android:targetSdkVersion" is not less than 19.
+    patterns:
+      - pattern-either:
+        - patterns:
+          - pattern: class $CLASS extends PreferenceActivity{ ... }
+          - pattern-not: class $CLASS extends PreferenceActivity{ ...
+                @Override
+                boolean isValidFragment(String $FNAME) { ... }
+              ... }
+        - pattern: boolean isValidFragment(String $FNAME) { return true; }
+

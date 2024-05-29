@@ -1,0 +1,30 @@
+rules:
+  - id: MSTG-PLATFORM-2.6
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      authors:
+        - Riccardo Cardelli @gand3lf (IMQ Minded Security)
+      owasp-mobile: M7
+      category: security
+      area: platform
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-for-fragment-injection-mstg-platform-2
+    message: Potential Fragment Injection found in the dinamically instantiated Fragment.
+    mode: taint
+    pattern-sources:
+      - patterns:
+        - pattern-inside: class $CLASS extends FragmentActivity { ... }
+        - pattern-either:
+            - pattern: ... .getIntent().$GETMETHOD(...)
+            - pattern: getIntent().$GETMETHOD(...)
+        - metavariable-regex:
+            metavariable: $GETMETHOD
+            regex: get.*
+    pattern-sinks:
+      - pattern: Fragment.instantiate(...)
+

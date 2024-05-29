@@ -1,0 +1,43 @@
+rules:
+  - id: MSTG-PLATFORM-2.2
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      authors:
+        - Riccardo Cardelli @gand3lf (IMQ Minded Security)
+      owasp-mobile: M7
+      category: security
+      area: platform
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-for-injection-flaws-mstg-platform-2
+    message: Identified the potential presence of SQL Injection in the ContentProvider class "$CLASS".
+    options:
+      symbolic_propagation: true
+    mode: taint
+    pattern-sources:
+        - patterns:
+            - pattern-inside: public class $CLASS extends ContentProvider{...}
+            - patterns:
+                - pattern-inside: $METHOD(..., $A, ...){...}
+                - metavariable-regex:
+                    metavariable: $METHOD
+                    regex: (query|insert|update|delete|getType|getTypeAnonymous)
+                - focus-metavariable: $A
+    pattern-sinks:
+      - pattern: $DB.delete(...)
+      - pattern: $DB.update(...)
+      - pattern: $DB.updateWithOnConflict(...)
+      - pattern: $DB.execSQL(...)
+      - pattern: $DB.rawQuery(...)
+      - pattern: $DB.query(...)
+      - pattern: $DB.queryWithFactory(...)
+      - pattern: $DB.rawQueryWithFactory(...)
+      - patterns:
+        - pattern: <... "$X" ...>
+        - metavariable-regex:
+            metavariable: $X
+            regex: .*(?i)((WHERE )|(AND )|(OR )|(SELECT )|(INSERT INTO )|(CREATE TABLE )|(DROP TABLE )|(ALTER TABLE )|(IN\s?\()|(LIKE )).*
