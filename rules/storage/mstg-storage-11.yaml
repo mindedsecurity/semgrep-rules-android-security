@@ -5,7 +5,7 @@ rules:
       - xml
     metadata:
       authors:
-        - Riccardo Cardelli @gand3lf (IMQ Minded Security)
+        - Sparrrgh
       owasp-mobile: M1
       category: security
       area: storage
@@ -13,8 +13,11 @@ rules:
         - L2
       references:
         - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05d-Testing-Data-Storage.md#testing-the-device-access-security-policy-mstg-storage-11
-    message: The application allows to use Android versions earlier than 23.
+    message: The application does not implement a Device-Access-Security policy.
     patterns:
-      - pattern: <uses-sdk android:minSdkVersion="$X" />
-      - metavariable-comparison:
-          comparison: int($X)<23
+      - pattern-regex: |
+          (?s)(.*)
+      - pattern-not-regex: (<action\s+android:name="android\.app\.action\.DEVICE_ADMIN_ENABLED"\/>)
+    paths:
+      include:
+        - "**/AndroidManifest.xml"
