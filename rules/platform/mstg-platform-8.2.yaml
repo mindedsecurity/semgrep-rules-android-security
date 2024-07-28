@@ -1,0 +1,24 @@
+rules:
+  - id: MSTG-PLATFORM-8.2
+    severity: WARNING
+    languages:
+      - xml
+    metadata:
+      authors:
+        - Federico Dotta @apps3c (HN Security)
+      owasp-mobile: M1
+      category: security
+      area: platform
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-object-persistence-mstg-platform-8
+    message: >-
+        The application logs debug information on all the Sugar ORM queries, potentially disclosing critical information.
+    paths:
+      include:
+        - "**/AndroidManifest.xml"
+    options:
+      symbolic_propagation: true
+    pattern: <meta-data android:name="QUERY_LOG" android:value="true" />

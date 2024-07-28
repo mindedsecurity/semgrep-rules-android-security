@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <application android:name="com.orm.SugarApp" > 
+        <meta-data android:name="DATABASE" android:value="example.db" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <!-- ruleid: MSTG-PLATFORM-8.2 -->
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example" />
+    </application>
+</manifest>
