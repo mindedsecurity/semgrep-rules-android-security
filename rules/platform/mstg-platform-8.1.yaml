@@ -1,0 +1,115 @@
+rules:
+  - id: MSTG-PLATFORM-8.1
+    severity: WARNING
+    paths:
+        exclude:
+          - "**/org/apache/commons/**"
+    languages:
+      - java
+    metadata:
+      authors:
+        - Federico Dotta @apps3c (HN Security)
+      owasp-mobile: M1
+      category: security
+      area: platform
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05h-Testing-Platform-Interaction.md#testing-object-persistence-mstg-platform-8
+    message: >-
+        The application saves objects using potentially unsafe persistence primitives that apparently do not employ encryption.
+    pattern-either:
+      # Functions
+      - patterns:
+        - pattern-either: 
+          # Java
+          - pattern: (ObjectOutputStream $X).writeObject(...)
+          - pattern: (ObjectOutputStream $X).writeUnshared(...)        
+          #- pattern: (ObjectInputStream $X).readObject(...)
+          #- pattern: (ObjectInputStream $X).readUnshared(...)
+          # JSON - Android (too many results in modern applications)
+          #- pattern: new JSONObject(...)
+          #- pattern: new JSONArray(...)
+          # JSON - GSON
+          - pattern: new Gson()
+          # JSON - Jackson
+          - pattern: new ObjectMapper(...)
+          # JSON - Moshi (too many results in modern applications)
+          #- pattern: (Moshi $X).adapter(...)
+          # XMLSerializer (deserializer: XmlPullParser)
+          - pattern: XmlSerializer $Y = $X.newSerializer();
+          # SAX parser (skip)
+          # XML XStream
+          - pattern: (XStream $X).toXML(...)
+          # GreenDAO (the searched method is without encryption. Use "getEncryptedWritableDb" to use SQLCipher). 
+          # This is only for database creation. We can also check every time the DB is used but probably it would produce
+          # too many results....
+          - pattern: $X.getWritableDb(...)
+          # ActiveAndroid (Does not support encryption natively. There are some custom integrations to use SQLCipher)
+          - pattern: ActiveAndroid.initialize(...)
+          # Realm
+          - patterns:
+              - pattern: new RealmConfiguration.Builder(...). ... .build()
+              - pattern-not: new RealmConfiguration.Builder(...). ... .encryptionKey(...). ... .build()
+          - patterns:
+              - pattern: new SyncConfiguration.Builder(...). ... .build()
+              - pattern-not: new SyncConfiguration.Builder(...). ... .encryptionKey(...). ... .build()
+          # Parceable - Skipping
+          # Protobuf - Skipping
+        - pattern-not-inside: |
+            $M(...){ 
+              ...
+              (Cipher $S).doFinal(...);
+              ...
+            }
+      # Class extended
+      - patterns:
+        - pattern-either:  
+          # Java
+          - pattern: class $C extends ObjectOutputStream
+          #- pattern: class $C extends ObjectInputStream
+          # JSON Android
+          - pattern: class $C extends JSONArray
+          - pattern: class $C extends JSONObject
+          # JSON GSON
+          - pattern: class $C extends Gson
+          # JSON Jackson
+          - pattern: class $C extends ObjectMapper
+          # JSON Mochi
+          - pattern: class $C extends Moshi
+          # XML Xstream
+          - pattern: class $C extends XStream
+          # ActiveAndroid (Does not support encryption natively. There are some custom integrations to use SQLCipher)
+          - pattern: class $C extends com.activeandroid.app.Application
+        - pattern-not-inside: |
+            class $C extends $T {
+              $M(...){ 
+                ...
+                (Cipher $S).doFinal(...);
+                ...
+              }
+            }
+      # Import
+      - patterns:
+        - pattern-either:     
+          # ORM Lite - Don't support SQLCipher natively (on GitHub a patched library has been released to implement SQLCipher)
+          # May return tons of results, maybe "pattern: com.j256.ormlite.android" may limit results...
+          - patterns: 
+            - pattern: import com.j256
+            - pattern-not: import com.j256.ormlite.cipher
+          # Sugar ORM - Don't support encryption, unless using an unupdated fork of the author. It is not easy to
+          # detect if the used version is the used one, but the one that supports encryption is quite obsolete
+          # and the key is placed in the Manifest in clear-text.
+          # May return tons of results
+          - pattern: import com.github.satyan     
+        - pattern-not-inside: |
+            import $I;
+            ...
+            class $C extends $T {
+              $M(...){ 
+                ...
+                (Cipher $S).doFinal(...);
+                ...
+              }
+            }
