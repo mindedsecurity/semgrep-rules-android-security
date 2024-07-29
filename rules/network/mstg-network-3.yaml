@@ -1,0 +1,33 @@
+rules:
+  - id: MSTG-NETWORK-3
+    severity: WARNING
+    languages:
+      - java
+    metadata:
+      authors:
+        - Riccardo Cardelli @gand3lf (IMQ Minded Security)
+      owasp-mobile: M3
+      category: security
+      area: network
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05g-Testing-Network-Communication.md#testing-endpoint-identify-verification-mstg-network-3
+    message: Improper Server Certificate verification detected.
+    options:
+      symbolic_propagation: true
+    pattern-either:
+      - patterns:
+        - pattern-inside: class $CLASS implements HostnameVerifier{ ... }
+        - pattern: public boolean verify(String host, SSLSession session) { return true; }
+      - patterns:
+        - pattern: void checkServerTrusted(X509Certificate[] $CHAIN, String $AUTHTYPE) throws CertificateException{ ... }
+        - pattern-not: void checkServerTrusted(X509Certificate[] $CHAIN, String $AUTHTYPE) throws CertificateException{ ...
+            throw new CertificateException(...);
+            ... }
+      - pattern: new HostnameVerifier(){ ...
+          boolean verify(...) { return true; }
+          ... }
+      - pattern: ... .ALLOW_ALL_HOSTNAME_VERIFIER
+      - pattern: void onReceivedSslError(WebView $VIEW, SslErrorHandler $HANDLER, SslError $ERR) { $HANDLER.proceed(); }
